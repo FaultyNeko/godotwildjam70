@@ -1,4 +1,65 @@
-[gd_scene format=3 uid="uid://ciujyxbpstqtg"]
+[gd_scene load_steps=20 format=3 uid="uid://ciujyxbpstqtg"]
+
+[ext_resource type="Script" path="res://Scripts/Controls.cs" id="1_i4x6b"]
+[ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="2_ew2bo"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_ystb8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x2yq"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(102, 6, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvoen"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(50, 2, 45, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i7or"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(48, 48, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ftsk"]
+texture = SubResource("AtlasTexture_6i7or")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk8fy"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(177, 97, 62, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gl7l0"]
+texture = SubResource("AtlasTexture_wk8fy")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2llqr"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(177, 129, 62, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t3doq"]
+texture = SubResource("AtlasTexture_2llqr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc7oq"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(177, 129, 62, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eveug"]
+texture = SubResource("AtlasTexture_fc7oq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4wnv"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(161, 49, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3j0q"]
+texture = SubResource("AtlasTexture_f4wnv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbqrm"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(161, 49, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4vrvo"]
+texture = SubResource("AtlasTexture_cbqrm")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu2f1"]
+atlas = ExtResource("2_ew2bo")
+region = Rect2(161, 49, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24tyu"]
+texture = SubResource("AtlasTexture_wu2f1")
 
 [node name="Controls" type="Control"]
 layout_mode = 3
@@ -7,3 +68,105 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i4x6b")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_1x2yq")
+metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222222
+anchor_top = 0.0864197
+anchor_right = 0.777778
+anchor_bottom = 0.901235
+offset_top = 1.52588e-05
+texture = SubResource("AtlasTexture_yvoen")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361111
+anchor_top = 0.0987654
+anchor_right = 0.638889
+anchor_bottom = 0.246914
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_ystb8")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ftsk")
+text = "Controls"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.805556
+anchor_top = 0.802469
+anchor_right = 0.930556
+anchor_bottom = 0.901235
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ystb8")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_gl7l0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t3doq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eveug")
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.790123
+anchor_right = 0.5625
+anchor_bottom = 0.888889
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ystb8")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_gl7l0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t3doq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eveug")
+text = "Reset controls"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.277778
+anchor_top = 0.296296
+anchor_right = 0.393229
+anchor_bottom = 0.395062
+theme_override_fonts/font = ExtResource("3_ystb8")
+theme_override_font_sizes/font_size = 54
+text = "Up"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="UpButton" type="Button" parent="." groups=["RemapButtons"]]
+layout_mode = 0
+anchor_left = 0.388889
+anchor_top = 0.296296
+anchor_right = 0.444444
+anchor_bottom = 0.395062
+theme_override_fonts/font = ExtResource("3_ystb8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_p3j0q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4vrvo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_24tyu")
+text = "W"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Back" to="." method="OnBackPressed"]
+[connection signal="pressed" from="Reset" to="." method="OnResetPressed"]

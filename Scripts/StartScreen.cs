@@ -3,17 +3,17 @@ using System;
 
 public partial class StartScreen : Control
 {
-	private void _OnStartPressed()
+	private void OnStartPressed()
 	{
 		GetTree().ChangeSceneToFile("Scenes//Main.tscn");
 	}
 	
-	private void _OnSettingsPressed()
+	private void OnSettingsPressed()
 	{
 		GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
 	}
 	
-	private void _OnQuitPressed()
+	private void OnQuitPressed()
 	{
 		GetTree().Quit();
 	}

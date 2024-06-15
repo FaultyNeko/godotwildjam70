@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb4gmqcvbhd0g"]
+[gd_scene load_steps=17 format=3 uid="uid://bb4gmqcvbhd0g"]
 
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="1_w358u"]
 [ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="2_u2vct"]
@@ -13,33 +13,41 @@ region = Rect2(102, 6, 36, 36)
 atlas = ExtResource("2_u2vct")
 region = Rect2(50, 2, 45, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6i7or"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj7n0"]
 atlas = ExtResource("2_u2vct")
 region = Rect2(48, 48, 48, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3cgm"]
-texture = SubResource("AtlasTexture_6i7or")
+texture = SubResource("AtlasTexture_uj7n0")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wk8fy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kckim"]
 atlas = ExtResource("2_u2vct")
 region = Rect2(177, 97, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6432j"]
-texture = SubResource("AtlasTexture_wk8fy")
+texture = SubResource("AtlasTexture_kckim")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2llqr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rquve"]
 atlas = ExtResource("2_u2vct")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dlil1"]
-texture = SubResource("AtlasTexture_2llqr")
+texture = SubResource("AtlasTexture_rquve")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fc7oq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggl3b"]
 atlas = ExtResource("2_u2vct")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5p0om"]
-texture = SubResource("AtlasTexture_fc7oq")
+texture = SubResource("AtlasTexture_ggl3b")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm42q"]
+atlas = ExtResource("2_u2vct")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlteu"]
+atlas = ExtResource("2_u2vct")
+region = Rect2(64, 64, 16, 16)
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -55,10 +63,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.987654
+offset_bottom = 8.00024
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_cwqxq")
-metadata/_edit_use_anchors_ = true
 
 [node name="Settings" type="TextureRect" parent="."]
 layout_mode = 1
@@ -69,7 +77,6 @@ anchor_right = 0.722222
 anchor_bottom = 0.901235
 offset_top = 1.52588e-05
 texture = SubResource("AtlasTexture_cl3ao")
-metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -84,23 +91,21 @@ theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxTexture_q3cgm")
 text = "Settings"
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Volume" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -132.0
-offset_right = 120.0
-offset_bottom = 31.0
+anchors_preset = -1
+anchor_left = 0.395833
+anchor_top = 0.272377
+anchor_right = 0.604167
+anchor_bottom = 0.571759
+offset_top = 15.5
+offset_bottom = -15.5
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Volume"]
+[node name="MasterText" type="Label" parent="Volume"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_lhh53")
 theme_override_font_sizes/font_size = 35
@@ -112,12 +117,13 @@ layout_mode = 2
 theme_override_constants/grabber_offset = 0
 max_value = 1.0
 step = 0.05
+value = 1.0
 scrollable = false
 script = ExtResource("4_k3mox")
 _busName = "Master"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Volume"]
+[node name="MusicText" type="Label" parent="Volume"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_lhh53")
 theme_override_font_sizes/font_size = 35
@@ -129,12 +135,13 @@ layout_mode = 2
 theme_override_constants/grabber_offset = 0
 max_value = 1.0
 step = 0.05
+value = 1.0
 scrollable = false
 script = ExtResource("4_k3mox")
 _busName = "Music"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="Volume"]
+[node name="SFXText" type="Label" parent="Volume"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_lhh53")
 theme_override_font_sizes/font_size = 35
@@ -146,6 +153,7 @@ layout_mode = 2
 theme_override_constants/grabber_offset = 0
 max_value = 1.0
 step = 0.05
+value = 1.0
 scrollable = false
 script = ExtResource("4_k3mox")
 _busName = "SFX"
@@ -167,7 +175,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_6432j")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dlil1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5p0om")
 text = "Back"
-metadata/_edit_use_anchors_ = true
 
 [node name="Controls" type="Button" parent="."]
 layout_mode = 1
@@ -185,10 +192,34 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_6432j")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dlil1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5p0om")
 text = "Controls"
-metadata/_edit_use_anchors_ = true
+
+[node name="FullscreenText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 400.0
+offset_right = 614.0
+offset_bottom = 472.0
+theme_override_fonts/font = ExtResource("3_lhh53")
+theme_override_font_sizes/font_size = 50
+text = "Fullscreen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fullscreen" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 416.0
+offset_right = 680.0
+offset_bottom = 464.0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_xm42q")
+texture_pressed = SubResource("AtlasTexture_wlteu")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="value_changed" from="Volume/Master" to="Volume/Master" method="_OnValueChanged"]
 [connection signal="value_changed" from="Volume/Music" to="Volume/Music" method="_OnValueChanged"]
 [connection signal="value_changed" from="Volume/SFX" to="Volume/SFX" method="_OnValueChanged"]
-[connection signal="pressed" from="Back" to="." method="_OnBackPressed"]
-[connection signal="pressed" from="Controls" to="." method="_OnControlsPressed"]
+[connection signal="pressed" from="Back" to="." method="OnBackPressed"]
+[connection signal="pressed" from="Controls" to="." method="OnControlsPressed"]
+[connection signal="toggled" from="Fullscreen" to="." method="OnFullscreenToggled"]

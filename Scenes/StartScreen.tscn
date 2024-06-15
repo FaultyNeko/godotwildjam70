@@ -122,6 +122,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ontxe")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Start" to="." method="_OnStartPressed"]
-[connection signal="pressed" from="Settings" to="." method="_OnSettingsPressed"]
-[connection signal="pressed" from="Quit" to="." method="_OnQuitPressed"]
+[connection signal="pressed" from="Start" to="." method="OnStartPressed"]
+[connection signal="pressed" from="Settings" to="." method="OnSettingsPressed"]
+[connection signal="pressed" from="Quit" to="." method="OnQuitPressed"]

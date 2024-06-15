@@ -3,13 +3,21 @@ using System;
 
 public partial class Settings : Control
 {
-	private void _OnBackPressed()
+	private void OnBackPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//Main.tscn");
+		GetTree().ChangeSceneToFile("Scenes//StartScreen.tscn");
 	}
 
-	private void _OnControlsPressed()
+	private void OnControlsPressed()
 	{
 		GetTree().ChangeSceneToFile("Scenes//Controls.tscn");
+	}
+
+	private void OnFullscreenToggled(bool toggledOn)
+	{
+		if (toggledOn)
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		else
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 	}
 }
