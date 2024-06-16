@@ -13,7 +13,7 @@ config_version=5
 config/name="Wild Game Jam 70"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://Assets/icon.svg"
+config/icon="res://Resources/icon.svg"
 
 [dotnet]
 
@@ -47,3 +47,8 @@ dash={
 2d_render/layer_1="Player"
 2d_render/layer_2="Ground"
 2d_render/layer_3="Wall"
+
+[navigation]
+
+2d/default_edge_connection_margin=4.0
+2d/default_link_connection_radius=2.0

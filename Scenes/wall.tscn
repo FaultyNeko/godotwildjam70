@@ -6,7 +6,6 @@
 size = Vector2(68, 69)
 
 [node name="Wall" type="StaticBody2D"]
-collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rm2vt")
