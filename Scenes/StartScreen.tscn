@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_2m6bo"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_4qglw"]
-[ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="4_uq8h6"]
+[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/UISprites.png" id="4_uq8h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyhk3"]
 atlas = ExtResource("4_uq8h6")
@@ -65,7 +65,7 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_4qglw")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxTexture_87vee")
-text = "fuck youuuuuu"
+text = "I am ur mom"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 

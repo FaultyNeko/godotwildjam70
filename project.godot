@@ -11,13 +11,23 @@ config_version=5
 [application]
 
 config/name="Wild Game Jam 70"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/StartScreen.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://Assets/icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="Wild Game Jam 70"
+
+[editor]
+
+naming/default_signal_callback_name="_On{node_name}{signal_name}"
+naming/default_signal_callback_to_self_name="_On{signal_name}"
 
 [input]
 
@@ -47,3 +57,7 @@ dash={
 2d_render/layer_1="Player"
 2d_render/layer_2="Ground"
 2d_render/layer_3="Wall"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
