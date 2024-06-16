@@ -112,7 +112,7 @@ theme_override_font_sizes/font_size = 35
 text = "Master Volume"
 horizontal_alignment = 1
 
-[node name="Master" type="HSlider" parent="Volume"]
+[node name="Master" type="HSlider" parent="Volume" groups=["VolumeSliders"]]
 layout_mode = 2
 theme_override_constants/grabber_offset = 0
 max_value = 1.0
@@ -130,7 +130,7 @@ theme_override_font_sizes/font_size = 35
 text = "Music"
 horizontal_alignment = 1
 
-[node name="Music" type="HSlider" parent="Volume"]
+[node name="Music" type="HSlider" parent="Volume" groups=["VolumeSliders"]]
 layout_mode = 2
 theme_override_constants/grabber_offset = 0
 max_value = 1.0
@@ -148,7 +148,7 @@ theme_override_font_sizes/font_size = 35
 text = "SFX"
 horizontal_alignment = 1
 
-[node name="SFX" type="HSlider" parent="Volume"]
+[node name="SFX" type="HSlider" parent="Volume" groups=["VolumeSliders"]]
 layout_mode = 2
 theme_override_constants/grabber_offset = 0
 max_value = 1.0
@@ -169,6 +169,7 @@ anchor_bottom = 0.901235
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_lhh53")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_6432j")
@@ -186,6 +187,7 @@ anchor_bottom = 0.876544
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_lhh53")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_6432j")
@@ -198,7 +200,7 @@ layout_mode = 0
 offset_left = 472.0
 offset_top = 400.0
 offset_right = 614.0
-offset_bottom = 472.0
+offset_bottom = 464.0
 theme_override_fonts/font = ExtResource("3_lhh53")
 theme_override_font_sizes/font_size = 50
 text = "Fullscreen"
@@ -208,9 +210,10 @@ vertical_alignment = 1
 [node name="Fullscreen" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 632.0
-offset_top = 416.0
+offset_top = 408.0
 offset_right = 680.0
-offset_bottom = 464.0
+offset_bottom = 456.0
+focus_mode = 0
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_xm42q")
 texture_pressed = SubResource("AtlasTexture_wlteu")

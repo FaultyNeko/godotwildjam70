@@ -42,21 +42,21 @@ texture = SubResource("AtlasTexture_fc7oq")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4wnv"]
 atlas = ExtResource("2_ew2bo")
-region = Rect2(161, 49, 30, 30)
+region = Rect2(18, 53, 12, 7)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3j0q"]
 texture = SubResource("AtlasTexture_f4wnv")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbqrm"]
 atlas = ExtResource("2_ew2bo")
-region = Rect2(161, 49, 30, 30)
+region = Rect2(18, 53, 12, 7)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4vrvo"]
 texture = SubResource("AtlasTexture_cbqrm")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wu2f1"]
 atlas = ExtResource("2_ew2bo")
-region = Rect2(161, 49, 30, 30)
+region = Rect2(18, 53, 12, 7)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24tyu"]
 texture = SubResource("AtlasTexture_wu2f1")
@@ -116,6 +116,7 @@ anchor_bottom = 0.901235
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ystb8")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_gl7l0")
@@ -134,6 +135,7 @@ anchor_bottom = 0.888889
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ystb8")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_gl7l0")
@@ -154,12 +156,14 @@ text = "Up"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="UpButton" type="Button" parent="." groups=["RemapButtons"]]
-layout_mode = 0
+[node name="Up" type="Button" parent="." groups=["RemapButtons"]]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.388889
 anchor_top = 0.296296
-anchor_right = 0.444444
+anchor_right = 0.5
 anchor_bottom = 0.395062
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ystb8")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_p3j0q")

@@ -15,8 +15,14 @@ public partial class Controls : Control
 
 	public override void _Ready()
 	{
+		LoadControls();
+		var inputConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
+		
 		foreach (Button button in GetTree().GetNodesInGroup("RemapButtons"))
+		{
 			button.Pressed += () => OnButtonPressed(button);
+			button.Text = _ReturnText((InputEvent)inputConfig.DataDic[button.Name]);
+		}
 	}
 
 	private void OnButtonPressed(Button button)
@@ -24,25 +30,37 @@ public partial class Controls : Control
 		if (!_remapping)
 		{
 			_remapping = true;
+			_currentButton = button;
+			_currentAction = button.Name;
 			button.Text = "-";
 		}
 	}
 	
 	private void OnBackPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
+		if (!_remapping)
+			GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
 	}
 
 	private void OnResetPressed()
 	{
-		Godot.Collections.Array<Node> buttons = GetTree().GetNodesInGroup("RemapButtons");
-		for (int i = 0; i < buttons.Count; i++)
+		if (!_remapping)
 		{
-			((Button)buttons[i]).Text = _defaults[i];
+			var ev = Key.W;
+			
+			Array<Node> buttons = GetTree().GetNodesInGroup("RemapButtons");
+			Array<StringName> events = InputMap.GetActions();
+			_remapping = true;
+			for (int i = 0; i < buttons.Count; i++)
+			{
+				((Button)buttons[i]).Text = _defaults[i];
+			}
+			_remapping = false;
+			SaveControls();
 		}
 	}
 	
-	//For setting the text of the buttons at the start
+	// Returns the character to display of an InputEvent
 	public string _ReturnText(InputEvent @event)
 	{
 		string str = "";
@@ -68,7 +86,7 @@ public partial class Controls : Control
 		return str;
 	}
 	
-	//Detects input and remaps the control
+	// Detects input and remaps the control
 	public override void _Input(InputEvent @event)
 	{
 		InputEvent temp = @event;
@@ -87,8 +105,8 @@ public partial class Controls : Control
 	public void SaveControls()
 	{
 		DirAccess.MakeDirAbsolute(SaveDir);
-		var inputConfig = new InputConfig();
-		var saveData = new Dictionary<string, InputEvent>
+		var inputConfig = new SaveConfig();
+		var saveData = new Dictionary<string, Variant>
 		{
 			{ "Up", InputMap.ActionGetEvents("Up")[0]}
 		};
@@ -99,13 +117,13 @@ public partial class Controls : Control
 	
 	public void LoadControls()
 	{
-		var inputConfig = ResourceLoader.Load<InputConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
+		var inputConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
 
 		foreach (string str in inputConfig.DataDic.Keys)
 		{
 			InputMap.EraseAction(str);
 			InputMap.AddAction(str);
-			InputMap.ActionAddEvent(str, inputConfig.DataDic[str]);
+			InputMap.ActionAddEvent(str, (InputEvent)inputConfig.DataDic[str]);
 		}
 		
 	}
