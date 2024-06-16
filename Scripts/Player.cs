@@ -9,29 +9,48 @@ public partial class Player : CharacterBody2D
     public const float DashDuration = 0.2f;
     public const float DashCooldown = 1.0f;
     public const float WallJumpVelocity = -400.0f;
-    public const float WallSlideSpeed = 100.0f;
+    public const float WallJumpHorizontalSpeed = 300.0f; // Horizontal speed for wall jumps
+    public const float WallSlideGravityFactor = 0.5f; // Gravity factor during wall slide
 
     private int _jumpCount;
     private bool _hasDoubleJumped;
     private bool _isDashing;
-    private bool _isWallSliding;
     private float _dashTimeLeft;
     private float _dashCooldownTimeLeft;
-    private bool _isTouchingWall;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+    
+    private RayCast2D _rayCastLeft;
+    private RayCast2D _rayCastRight;
+    private AnimationPlayer _animationPlayer;
+    
+    public override void _Ready()
+    {
+        _rayCastLeft = GetNode<RayCast2D>("RayCast2DLeft");
+        _rayCastRight = GetNode<RayCast2D>("RayCast2DRight");
+        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+    }
 
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
-
         // Add the gravity.
-        if (!IsOnFloor() && !_isDashing && !_isWallSliding)
+        if (!IsOnFloor() && !_isDashing)
         {
-            velocity.Y += gravity * (float)delta;
+            if (IsOnWall())
+            {
+                if (velocity.Y > 0)
+                {
+                    velocity.Y = 0; // Immediately set Y velocity to 0 when touching the wall
+                }
+                velocity.Y += gravity * WallSlideGravityFactor * (float)delta; // Apply reduced gravity for wall sliding
+            }
+            else
+            {
+                velocity.Y += gravity * (float)delta;
+            }
         }
-
         // Handle Dash input
         if (Input.IsActionJustPressed("dash") && _dashCooldownTimeLeft <= 0)
         {
@@ -39,7 +58,6 @@ public partial class Player : CharacterBody2D
             _dashTimeLeft = DashDuration;
             _dashCooldownTimeLeft = DashCooldown;
         }
-
         // Handle dashing
         if (_isDashing)
         {
@@ -69,7 +87,6 @@ public partial class Player : CharacterBody2D
                 velocity.X = 0;
             }
         }
-
         // Update dash cooldown timer
         if (_dashCooldownTimeLeft > 0)
         {
@@ -86,11 +103,18 @@ public partial class Player : CharacterBody2D
                 _jumpCount = 1;
                 _hasDoubleJumped = false; // Reset double jump flag
             }
-            else if (_isTouchingWall && !_isDashing)
+            else if (IsOnWall() && !_isDashing)
             {
                 // Wall jump
                 velocity.Y = WallJumpVelocity;
-                velocity.X = (Input.IsActionPressed("right") ? -Speed : (Input.IsActionPressed("left") ? Speed : 0));
+                if (_rayCastLeft.IsColliding())
+                {
+                    velocity.X = WallJumpHorizontalSpeed; // Jump to the right if on the left wall
+                }
+                else if (_rayCastRight.IsColliding())
+                {
+                    velocity.X = -WallJumpHorizontalSpeed; // Jump to the left if on the right wall
+                }
                 _jumpCount = 1; // Reset jump count for a double jump
                 _hasDoubleJumped = false;
             }
@@ -109,24 +133,6 @@ public partial class Player : CharacterBody2D
                 _hasDoubleJumped = true;
             }
         }
-
-        // Handle Wall Slide
-        if (_isTouchingWall && !IsOnFloor() && velocity.Y > 0)
-        {
-            _isWallSliding = true;
-            velocity.Y = Mathf.Min(velocity.Y, WallSlideSpeed);
-            GD.Print("Wall sliding.");
-        }
-        else
-        {
-            _isWallSliding = false;
-        }
-        Velocity = velocity;
-        MoveAndSlide();
-
-        // Check if touching a wall
-        _isTouchingWall = IsOnWall();
-
         // Reset jump count when on the floor after movement.
         if (IsOnFloor())
         {
@@ -135,14 +141,16 @@ public partial class Player : CharacterBody2D
             {
                 _jumpCount = 0;
                 _hasDoubleJumped = false;
-                GD.Print("Landed. Jump count reset to: " + _jumpCount);
             }
         }
+        Velocity = velocity;
+        MoveAndSlide();
     }
-
     private bool IsOnWall()
     {
-        //placeholder method untill i figure out how to handel wall jumping further
-        return false;
+        // Check if either RayCast2D is colliding
+        return _rayCastLeft.IsColliding() || _rayCastRight.IsColliding();
     }
 }
+   
+
