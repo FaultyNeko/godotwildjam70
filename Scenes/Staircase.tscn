@@ -1,20 +1,7 @@
-<<<<<<< HEAD
 [gd_scene load_steps=3 format=3 uid="uid://col31hk445y6"]
 
 [ext_resource type="PackedScene" uid="uid://niiq232ee0ij" path="res://Scenes/Ground.tscn" id="1_ewb68"]
 [ext_resource type="PackedScene" uid="uid://drym37nixo6ax" path="res://Scenes/Wall.tscn" id="2_px3yi"]
-=======
-[gd_scene load_steps=4 format=3 uid="uid://ctgkg4i5fgmf5"]
-
-[ext_resource type="PackedScene" uid="uid://b4i3bfnatk57e" path="res://Scenes/Ground.tscn" id="1_ewb68"]
-[ext_resource type="PackedScene" uid="uid://dstkbw2pvvit5" path="res://Scenes/Wall.tscn" id="2_px3yi"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_2bong"]
-vertices = PackedVector2Array(18, -50, 10, -438, 646, -438, 566, -274, 494, -194, 646, -274, 566, -194, 494, -122, 430, -122, 430, -50)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 5, 3), PackedInt32Array(3, 6, 4), PackedInt32Array(4, 7, 8), PackedInt32Array(0, 4, 8), PackedInt32Array(0, 8, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(8, -40, 440, -40, 440, -112, 504, -112, 504, -184, 576, -184, 576, -264, 656, -264, 656, -448, 0, -448)])
-source_geometry_group_name = &"navigation_polygon_source_group"
->>>>>>> solar
 
 [node name="Staircase" type="Node2D"]
 
@@ -53,9 +40,3 @@ position = Vector2(616, -144)
 
 [node name="Wall 12" parent="." instance=ExtResource("2_px3yi")]
 position = Vector2(616, -216)
-<<<<<<< HEAD
-=======
-
-[node name="Navigation" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_2bong")
->>>>>>> solar

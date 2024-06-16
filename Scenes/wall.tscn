@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dstkbw2pvvit5"]
+[gd_scene load_steps=3 format=3 uid="uid://drym37nixo6ax"]
 
-[ext_resource type="Texture2D" path="res://Sprites/grass.png" id="1_rm2vt"]
+[ext_resource type="Texture2D" uid="uid://c3hjcd7gr2f5k" path="res://Sprites/grass.png" id="1_rm2vt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ricyw"]
 size = Vector2(68, 69)
 
 [node name="Wall" type="StaticBody2D"]
+collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rm2vt")
