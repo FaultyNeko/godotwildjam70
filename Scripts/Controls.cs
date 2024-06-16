@@ -87,7 +87,7 @@ public partial class Controls : Control
 	public void SaveControls()
 	{
 		DirAccess.MakeDirAbsolute(SaveDir);
-		var inputConfig = new InputConfig();
+		var inputConfig = new WildGameJam70.Scripts.InputConfig();
 		var saveData = new Dictionary<string, InputEvent>
 		{
 			{ "Up", InputMap.ActionGetEvents("Up")[0]}
@@ -99,7 +99,7 @@ public partial class Controls : Control
 	
 	public void LoadControls()
 	{
-		var inputConfig = ResourceLoader.Load<InputConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
+		var inputConfig = ResourceLoader.Load<WildGameJam70.Scripts.InputConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
 
 		foreach (string str in inputConfig.DataDic.Keys)
 		{
