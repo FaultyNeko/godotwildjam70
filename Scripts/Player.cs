@@ -18,10 +18,11 @@ public partial class Player : CharacterBody2D
     private float _dashTimeLeft;
     private float _dashCooldownTimeLeft;
     private bool _isTouchingWall;
+    public bool IsActivated = true;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
-    public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
+    public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+    
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
@@ -29,7 +30,7 @@ public partial class Player : CharacterBody2D
         // Add the gravity.
         if (!IsOnFloor() && !_isDashing && !_isWallSliding)
         {
-            velocity.Y += gravity * (float)delta;
+            velocity.Y += Gravity * (float)delta;
         }
 
         // Handle Dash input
@@ -122,6 +123,8 @@ public partial class Player : CharacterBody2D
             _isWallSliding = false;
         }
         Velocity = velocity;
+        if (!IsActivated)
+            Velocity = Vector2.Zero;
         MoveAndSlide();
 
         // Check if touching a wall

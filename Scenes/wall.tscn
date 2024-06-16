@@ -5,14 +5,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ricyw"]
 size = Vector2(68, 69)
 
-[node name="Wall" type="Node2D"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Wall" type="StaticBody2D"]
 collision_layer = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rm2vt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ricyw")
