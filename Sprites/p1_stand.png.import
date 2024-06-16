@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6gh1eqqy4i12"
-path="res://.godot/imported/UISprites.png-07b9497a9ffe8325f8ca41923125e7bc.ctex"
+uid="uid://1pntpyrsmt5s"
+path="res://.godot/imported/p1_stand.png-45bcc989376e0e05a5102a1ae955da86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UISprites.png"
-dest_files=["res://.godot/imported/UISprites.png-07b9497a9ffe8325f8ca41923125e7bc.ctex"]
+source_file="res://Sprites/p1_stand.png"
+dest_files=["res://.godot/imported/p1_stand.png-45bcc989376e0e05a5102a1ae955da86.ctex"]
 
 [params]
 

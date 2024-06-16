@@ -1,10 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8jgu5vhnly84"]
+[gd_scene load_steps=4 format=3 uid="uid://c8jgu5vhnly84"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1v1uy"]
-load_path = "res://.godot/imported/icon.svg-8193eb3d66a1b5143b8bb4c28c1dc139.ctex"
+[ext_resource type="PackedScene" uid="uid://col31hk445y6" path="res://Scenes/Staircase.tscn" id="2_7gkgj"]
+[ext_resource type="PackedScene" uid="uid://cci8infj626o0" path="res://Scenes/Player.tscn" id="2_gxgar"]
+[ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_wh3qp"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(472, 208)
-texture = SubResource("CompressedTexture2D_1v1uy")
+[node name="Knight" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
+position = Vector2(32, -632)
+
+[node name="Camera" type="Camera2D" parent="Knight"]
+position_smoothing_enabled = true
+script = ExtResource("2_wh3qp")
+
+[node name="Demon" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
+modulate = Color(0.996078, 0.0196078, 0, 1)
+position = Vector2(32, 520)
+
+[node name="Regal Staircase" parent="." instance=ExtResource("2_7gkgj")]
+position = Vector2(0, -550)
+
+[node name="Under Staircase" parent="." instance=ExtResource("2_7gkgj")]
+position = Vector2(-8, 600)
