@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_2m6bo"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_4qglw"]
-[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/UISprites.png" id="4_uq8h6"]
+[ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="4_uq8h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyhk3"]
 atlas = ExtResource("4_uq8h6")
@@ -15,26 +15,26 @@ region = Rect2(48, 48, 48, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_87vee"]
 texture = SubResource("AtlasTexture_c83rh")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0i7w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_45bsa"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 97, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gu7o"]
-texture = SubResource("AtlasTexture_l0i7w")
+texture = SubResource("AtlasTexture_45bsa")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8pa0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_un80m"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qakkd"]
-texture = SubResource("AtlasTexture_s8pa0")
+texture = SubResource("AtlasTexture_un80m")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uo1oc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntjqe"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ontxe"]
-texture = SubResource("AtlasTexture_uo1oc")
+texture = SubResource("AtlasTexture_ntjqe")
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3

@@ -4,7 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
     public const float Speed = 300.0f;
-    public const float JumpVelocity = -400.0f;
+    public const float JumpVelocity = -450.0f;
     public const float DashSpeed = 600.0f;
     public const float DashDuration = 0.2f;
     public const float DashCooldown = 1.0f;
@@ -34,7 +34,7 @@ public partial class Player : CharacterBody2D
         }
 
         // Handle Dash input
-        if (Input.IsActionJustPressed("dash") && _dashCooldownTimeLeft <= 0)
+        if (Input.IsActionJustPressed("Dash") && _dashCooldownTimeLeft <= 0)
         {
             _isDashing = true;
             _dashTimeLeft = DashDuration;
@@ -47,7 +47,7 @@ public partial class Player : CharacterBody2D
             _dashTimeLeft -= (float)delta;
             if (_dashTimeLeft > 0)
             {
-                velocity.X = DashSpeed * (Input.IsActionPressed("right") ? 1 : (Input.IsActionPressed("left") ? -1 : 0));
+                velocity.X = DashSpeed * (Input.IsActionPressed("Right") ? 1 : (Input.IsActionPressed("Left") ? -1 : 0));
                 velocity.Y = 0; // Maintain horizontal movement during dash
             }
             else
@@ -57,11 +57,11 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            if (Input.IsActionPressed("right"))
+            if (Input.IsActionPressed("Right"))
             {
                 velocity.X = Speed;
             }
-            else if (Input.IsActionPressed("left"))
+            else if (Input.IsActionPressed("Left"))
             {
                 velocity.X = -Speed;
             }
@@ -78,7 +78,7 @@ public partial class Player : CharacterBody2D
         }
 
         // Handle Jump.
-        if (Input.IsActionJustPressed("jump"))
+        if (Input.IsActionJustPressed("Jump"))
         {
             if (IsOnFloor())
             {
@@ -91,7 +91,7 @@ public partial class Player : CharacterBody2D
             {
                 // Wall jump
                 velocity.Y = WallJumpVelocity;
-                velocity.X = (Input.IsActionPressed("right") ? -Speed : (Input.IsActionPressed("left") ? Speed : 0));
+                velocity.X = (Input.IsActionPressed("Right") ? -Speed : (Input.IsActionPressed("Left") ? Speed : 0));
                 _jumpCount = 1; // Reset jump count for a double jump
                 _hasDoubleJumped = false;
             }
@@ -116,7 +116,7 @@ public partial class Player : CharacterBody2D
         {
             _isWallSliding = true;
             velocity.Y = Mathf.Min(velocity.Y, WallSlideSpeed);
-            GD.Print("Wall sliding.");
+            //GD.Print("Wall sliding.");
         }
         else
         {
@@ -138,7 +138,7 @@ public partial class Player : CharacterBody2D
             {
                 _jumpCount = 0;
                 _hasDoubleJumped = false;
-                GD.Print("Landed. Jump count reset to: " + _jumpCount);
+                //GD.Print("Landed. Jump count reset to: " + _jumpCount);
             }
         }
     }

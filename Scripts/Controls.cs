@@ -4,8 +4,6 @@ using Godot.Collections;
 
 public partial class Controls : Control
 {
-	private String[] _defaults = { "W" };
-	
 	const string SaveDir = "user://saves";
 	const string SaveName = "controls.tres";
 
@@ -15,7 +13,7 @@ public partial class Controls : Control
 
 	public override void _Ready()
 	{
-		LoadControls();
+		LoadControls(SaveName);
 		var inputConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
 		
 		foreach (Button button in GetTree().GetNodesInGroup("RemapButtons"))
@@ -46,16 +44,7 @@ public partial class Controls : Control
 	{
 		if (!_remapping)
 		{
-			var ev = Key.W;
-			
-			Array<Node> buttons = GetTree().GetNodesInGroup("RemapButtons");
-			Array<StringName> events = InputMap.GetActions();
-			_remapping = true;
-			for (int i = 0; i < buttons.Count; i++)
-			{
-				((Button)buttons[i]).Text = _defaults[i];
-			}
-			_remapping = false;
+			LoadControls("defaultcontrols.tres");
 			SaveControls();
 		}
 	}
@@ -76,10 +65,10 @@ public partial class Controls : Control
 					str = "M1";
 					break;
 				case MouseButton.Middle:
-					str = "M2";
+					str = "M3";
 					break;
 				case MouseButton.Right:
-					str = "M3";
+					str = "M2";
 					break;
 			}
 		}
@@ -106,18 +95,17 @@ public partial class Controls : Control
 	{
 		DirAccess.MakeDirAbsolute(SaveDir);
 		var inputConfig = new SaveConfig();
-		var saveData = new Dictionary<string, Variant>
-		{
-			{ "Up", InputMap.ActionGetEvents("Up")[0]}
-		};
+		inputConfig.DataDic = new Dictionary<string, Variant>();
 
-		inputConfig.DataDic = saveData;
+		foreach (Button button in GetTree().GetNodesInGroup("RemapButtons"))
+			inputConfig.DataDic.Add(button.Name, InputMap.ActionGetEvents(button.Name)[0]);
+		
 		ResourceSaver.Save(inputConfig, SaveDir + "/" + SaveName, ResourceSaver.SaverFlags.ReplaceSubresourcePaths);
 	}
 	
-	public void LoadControls()
+	public void LoadControls(String name)
 	{
-		var inputConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
+		var inputConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + name, "", ResourceLoader.CacheMode.Ignore);
 
 		foreach (string str in inputConfig.DataDic.Keys)
 		{

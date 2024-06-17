@@ -27,7 +27,7 @@ public partial class Camera : Camera2D
 		_player2.IsActivated = !_isPlayer1Active;
 		PositionSmoothingEnabled = !_isTweenPlaying;
 			
-		if (Input.IsActionJustPressed("ui_up") && !_isTweenPlaying)
+		if (Input.IsActionJustPressed("Swap") && !_isTweenPlaying)
 			switchPlayers();
 	}
 
