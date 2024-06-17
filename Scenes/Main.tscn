@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8jgu5vhnly84"]
+[gd_scene load_steps=7 format=3 uid="uid://c8jgu5vhnly84"]
 
 [ext_resource type="PackedScene" uid="uid://cci8infj626o0" path="res://Scenes/Player.tscn" id="2_gxgar"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_wh3qp"]
 [ext_resource type="Texture2D" uid="uid://23npfs33x84x" path="res://Assets/Terrain TileSet.png" id="3_3t11n"]
-[ext_resource type="Script" path="res://Scripts/PauseScreen.cs" id="5_5bmh3"]
 [ext_resource type="PackedScene" uid="uid://hcdc78nj1jvo" path="res://Scenes/PauseScreen.tscn" id="5_cdogp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dq4ps"]
@@ -2339,6 +2338,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("5_cdogp")]
@@ -2349,5 +2350,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.0
 offset_bottom = 0.0
-script = ExtResource("5_5bmh3")
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
