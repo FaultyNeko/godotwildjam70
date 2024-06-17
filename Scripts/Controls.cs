@@ -4,8 +4,6 @@ using Godot.Collections;
 
 public partial class Controls : Control
 {
-	private String[] _defaults = { "W" };
-	
 	const string SaveDir = "user://saves";
 	const string SaveName = "controls.tres";
 
@@ -15,8 +13,14 @@ public partial class Controls : Control
 
 	public override void _Ready()
 	{
+		LoadControls(SaveName);
+		var inputConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
+		
 		foreach (Button button in GetTree().GetNodesInGroup("RemapButtons"))
+		{
 			button.Pressed += () => OnButtonPressed(button);
+			button.Text = _ReturnText((InputEvent)inputConfig.DataDic[button.Name]);
+		}
 	}
 
 	private void OnButtonPressed(Button button)
@@ -24,25 +28,28 @@ public partial class Controls : Control
 		if (!_remapping)
 		{
 			_remapping = true;
+			_currentButton = button;
+			_currentAction = button.Name;
 			button.Text = "-";
 		}
 	}
 	
 	private void OnBackPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
+		if (!_remapping)
+			GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
 	}
 
 	private void OnResetPressed()
 	{
-		Godot.Collections.Array<Node> buttons = GetTree().GetNodesInGroup("RemapButtons");
-		for (int i = 0; i < buttons.Count; i++)
+		if (!_remapping)
 		{
-			((Button)buttons[i]).Text = _defaults[i];
+			LoadControls("defaultcontrols.tres");
+			SaveControls();
 		}
 	}
 	
-	//For setting the text of the buttons at the start
+	// Returns the character to display of an InputEvent
 	public string _ReturnText(InputEvent @event)
 	{
 		string str = "";
@@ -58,17 +65,17 @@ public partial class Controls : Control
 					str = "M1";
 					break;
 				case MouseButton.Middle:
-					str = "M2";
+					str = "M3";
 					break;
 				case MouseButton.Right:
-					str = "M3";
+					str = "M2";
 					break;
 			}
 		}
 		return str;
 	}
 	
-	//Detects input and remaps the control
+	// Detects input and remaps the control
 	public override void _Input(InputEvent @event)
 	{
 		InputEvent temp = @event;
@@ -87,25 +94,24 @@ public partial class Controls : Control
 	public void SaveControls()
 	{
 		DirAccess.MakeDirAbsolute(SaveDir);
-		var inputConfig = new WildGameJam70.Scripts.InputConfig();
-		var saveData = new Dictionary<string, InputEvent>
-		{
-			{ "Up", InputMap.ActionGetEvents("Up")[0]}
-		};
+		var inputConfig = new SaveConfig();
+		inputConfig.DataDic = new Dictionary<string, Variant>();
 
-		inputConfig.DataDic = saveData;
+		foreach (Button button in GetTree().GetNodesInGroup("RemapButtons"))
+			inputConfig.DataDic.Add(button.Name, InputMap.ActionGetEvents(button.Name)[0]);
+		
 		ResourceSaver.Save(inputConfig, SaveDir + "/" + SaveName, ResourceSaver.SaverFlags.ReplaceSubresourcePaths);
 	}
 	
-	public void LoadControls()
+	public void LoadControls(String name)
 	{
-		var inputConfig = ResourceLoader.Load<WildGameJam70.Scripts.InputConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
+		var inputConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + name, "", ResourceLoader.CacheMode.Ignore);
 
 		foreach (string str in inputConfig.DataDic.Keys)
 		{
 			InputMap.EraseAction(str);
 			InputMap.AddAction(str);
-			InputMap.ActionAddEvent(str, inputConfig.DataDic[str]);
+			InputMap.ActionAddEvent(str, (InputEvent)inputConfig.DataDic[str]);
 		}
 		
 	}
