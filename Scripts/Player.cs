@@ -43,20 +43,14 @@ public partial class Player : CharacterBody2D
             _dashTimeLeft = DashDuration;
             _dashCooldownTimeLeft = DashCooldown;
         }
-
+        
         // Handle dashing
+        _isDashing = _dashTimeLeft > 0;
         if (_isDashing)
         {
             _dashTimeLeft -= (float)delta;
-            if (_dashTimeLeft > 0)
-            {
-                velocity.X = DashSpeed * direction;
-                velocity.Y = 0; // Maintain horizontal movement during dash
-            }
-            else
-            {
-                _isDashing = false;
-            }
+            velocity.X = DashSpeed * direction;
+            velocity.Y = 0; // Maintain horizontal movement during dash
         }
         else
         {
@@ -114,6 +108,7 @@ public partial class Player : CharacterBody2D
         {
             _isWallSliding = false;
         }
+        
         Velocity = velocity;
         if (!IsActivated)
             Velocity = Vector2.Zero;

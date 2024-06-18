@@ -15,7 +15,10 @@ public partial class AudioManager : Node
 		temp.Stream = GD.Load<AudioStream>("res://Assets/SFX/" + name + ".wav");
 		temp.Bus = bus;
 		parent.AddChild(temp);
-		temp.Finished += () => QueueFree();
+		try
+		{
+			temp.Finished += () => QueueFree();
+		} catch (Exception ignored) { }
 		temp.Play();
 	}
 }
