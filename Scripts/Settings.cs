@@ -37,11 +37,16 @@ public partial class Settings : Control
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 	}
 	
-	public void LoadVolume()
+	private void LoadVolume()
 	{
 		var volumeConfig = ResourceLoader.Load<SaveConfig>(SaveDir + "/" + SaveName, "", ResourceLoader.CacheMode.Ignore);
 
 		foreach (HSlider slider in _sliders)
 			slider.Value = (float)volumeConfig.DataDic[slider.Name];
+	}
+
+	private void PlayHover()
+	{
+		AudioManager.PlayerAudio.PlayAudio(this, "HoverButton", "SFX");
 	}
 }

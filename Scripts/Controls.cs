@@ -113,6 +113,10 @@ public partial class Controls : Control
 			InputMap.AddAction(str);
 			InputMap.ActionAddEvent(str, (InputEvent)inputConfig.DataDic[str]);
 		}
-		
+	}
+
+	private void PlayHover()
+	{
+		AudioManager.PlayerAudio.PlayAudio(this, "HoverButton", "SFX");
 	}
 }

@@ -3,22 +3,19 @@ using System;
 
 public partial class AudioManager : Node
 {
-	private AudioStreamPlayer _uiButtonHover;
-
-	public AudioManager()
-	{
-		_uiButtonHover = new AudioStreamPlayer();
-		_uiButtonHover.Stream = GD.Load<AudioStream>("res://Assets/SFX/HoverButton.wav");
-	}
+	public static AudioManager PlayerAudio;
 	
 	public override void _Ready()
 	{
-		_uiButtonHover = new AudioStreamPlayer();
-		_uiButtonHover.Stream = GD.Load<AudioStream>("res://Assets/SFX/HoverButton.wav");
+		PlayerAudio = new AudioManager();
 	}
-
-	public void PlayHover()
+	public void PlayAudio(Node parent, string name, string bus)
 	{
-		_uiButtonHover.Play();
+		AudioStreamPlayer temp = new AudioStreamPlayer();
+		temp.Stream = GD.Load<AudioStream>("res://Assets/SFX/" + name + ".wav");
+		temp.Bus = bus;
+		parent.AddChild(temp);
+		temp.Finished += () => QueueFree();
+		temp.Play();
 	}
 }

@@ -223,6 +223,8 @@ stretch_mode = 0
 [connection signal="value_changed" from="Volume/Master" to="Volume/Master" method="_OnValueChanged"]
 [connection signal="value_changed" from="Volume/Music" to="Volume/Music" method="_OnValueChanged"]
 [connection signal="value_changed" from="Volume/SFX" to="Volume/SFX" method="_OnValueChanged"]
+[connection signal="mouse_entered" from="Back" to="." method="PlayHover"]
 [connection signal="pressed" from="Back" to="." method="OnBackPressed"]
+[connection signal="mouse_entered" from="Controls" to="." method="PlayHover"]
 [connection signal="pressed" from="Controls" to="." method="OnControlsPressed"]
 [connection signal="toggled" from="Fullscreen" to="." method="OnFullscreenToggled"]

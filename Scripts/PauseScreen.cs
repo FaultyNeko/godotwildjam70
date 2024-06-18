@@ -23,4 +23,9 @@ public partial class PauseScreen : Control
 			GetTree().Paused = !GetTree().Paused;
 		}
 	}
+
+	private void PlayHover()
+	{
+		AudioManager.PlayerAudio.PlayAudio(this, "HoverButton", "SFX");
+	}
 }

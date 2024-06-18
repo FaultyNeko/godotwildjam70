@@ -26,6 +26,9 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
+        
+        // Detect left/right input
+        int direction = Input.GetAxis("Left", "Right").CompareTo(0);
 
         // Add the gravity.
         if (!IsOnFloor() && !_isDashing && !_isWallSliding)
@@ -47,7 +50,7 @@ public partial class Player : CharacterBody2D
             _dashTimeLeft -= (float)delta;
             if (_dashTimeLeft > 0)
             {
-                velocity.X = DashSpeed * (Input.IsActionPressed("Right") ? 1 : (Input.IsActionPressed("Left") ? -1 : 0));
+                velocity.X = DashSpeed * direction;
                 velocity.Y = 0; // Maintain horizontal movement during dash
             }
             else
@@ -57,18 +60,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            if (Input.IsActionPressed("Right"))
-            {
-                velocity.X = Speed;
-            }
-            else if (Input.IsActionPressed("Left"))
-            {
-                velocity.X = -Speed;
-            }
-            else
-            {
-                velocity.X = 0;
-            }
+            velocity.X = Speed * direction;
         }
 
         // Update dash cooldown timer
@@ -91,7 +83,7 @@ public partial class Player : CharacterBody2D
             {
                 // Wall jump
                 velocity.Y = WallJumpVelocity;
-                velocity.X = (Input.IsActionPressed("Right") ? -Speed : (Input.IsActionPressed("Left") ? Speed : 0));
+                velocity.X = direction;
                 _jumpCount = 1; // Reset jump count for a double jump
                 _hasDoubleJumped = false;
             }
@@ -112,10 +104,10 @@ public partial class Player : CharacterBody2D
         }
 
         // Handle Wall Slide
-        if (_isTouchingWall && !IsOnFloor() && velocity.Y > 0)
+        if (_isTouchingWall && !IsOnFloor() && velocity.Y > 0 && direction != 0)
         {
             _isWallSliding = true;
-            velocity.Y = Mathf.Min(velocity.Y, WallSlideSpeed);
+            velocity.Y = Mathf.Min(velocity.Y + 5, WallSlideSpeed);
             //GD.Print("Wall sliding.");
         }
         else
@@ -143,9 +135,9 @@ public partial class Player : CharacterBody2D
         }
     }
 
-    private bool IsOnWall()
+    /*private bool IsOnWall()
     {
         //placeholder method untill i figure out how to handel wall jumping further
         return false;
-    }
+    }*/
 }

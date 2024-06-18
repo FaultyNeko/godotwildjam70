@@ -17,4 +17,9 @@ public partial class StartScreen : Control
 	{
 		GetTree().Quit();
 	}
+
+	private void PlayHover()
+	{
+		AudioManager.PlayerAudio.PlayAudio(this, "HoverButton", "SFX");
+	}
 }

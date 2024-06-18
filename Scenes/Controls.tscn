@@ -318,5 +318,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_24tyu")
 text = "Escape"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="mouse_entered" from="Back" to="." method="PlayHover"]
 [connection signal="pressed" from="Back" to="." method="OnBackPressed"]
+[connection signal="mouse_entered" from="Reset" to="." method="PlayHover"]
 [connection signal="pressed" from="Reset" to="." method="OnResetPressed"]

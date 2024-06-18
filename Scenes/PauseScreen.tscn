@@ -107,5 +107,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_e7q10")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="mouse_entered" from="Resume" to="." method="PlayHover"]
 [connection signal="pressed" from="Resume" to="." method="OnResumePressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="PlayHover"]
 [connection signal="pressed" from="Quit" to="." method="OnQuitPressed"]
