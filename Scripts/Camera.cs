@@ -5,6 +5,7 @@ public partial class Camera : Camera2D
 {
 	private Player _player1, _player2;
 	private bool _isPlayer1Active, _isTweenPlaying;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -28,10 +29,10 @@ public partial class Camera : Camera2D
 		PositionSmoothingEnabled = !_isTweenPlaying;
 			
 		if (Input.IsActionJustPressed("Swap") && !_isTweenPlaying)
-			switchPlayers();
+			SwitchPlayers();
 	}
 
-	public void switchPlayers()
+	public void SwitchPlayers()
 	{
 		_isTweenPlaying = true;
 		Reparent(GetTree().Root.GetChild(0));

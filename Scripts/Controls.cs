@@ -37,7 +37,7 @@ public partial class Controls : Control
 	private void OnBackPressed()
 	{
 		if (!_remapping)
-			GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
+			QueueFree();
 	}
 
 	private void OnResetPressed()

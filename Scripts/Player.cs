@@ -12,12 +12,10 @@ public partial class Player : CharacterBody2D
     public const float WallSlideSpeed = 100.0f;
 
     private int _jumpCount;
-    private bool _hasDoubleJumped;
     private bool _isDashing;
     private bool _isWallSliding;
     private float _dashTimeLeft;
     private float _dashCooldownTimeLeft;
-    private bool _isTouchingWall;
     public bool IsActivated = true;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -26,27 +24,23 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
-        
-        // Detect left/right input
         int direction = Input.GetAxis("Left", "Right").CompareTo(0);
 
         // Add the gravity.
-        if (!IsOnFloor() && !_isDashing && !_isWallSliding)
-        {
+        if (!IsOnFloor() && !_isWallSliding && !_isDashing)
             velocity.Y += Gravity * (float)delta;
-        }
-
+        else
+            _jumpCount = 0;
+        
         // Handle Dash input
         if (Input.IsActionJustPressed("Dash") && _dashCooldownTimeLeft <= 0)
         {
-            _isDashing = true;
             _dashTimeLeft = DashDuration;
             _dashCooldownTimeLeft = DashCooldown;
         }
         
-        // Handle dashing
-        _isDashing = _dashTimeLeft > 0;
-        if (_isDashing)
+        // Handle Dashing
+        if (_dashTimeLeft > 0)
         {
             _dashTimeLeft -= (float)delta;
             velocity.X = DashSpeed * direction;
@@ -55,79 +49,29 @@ public partial class Player : CharacterBody2D
         else
         {
             velocity.X = Speed * direction;
-        }
-
-        // Update dash cooldown timer
-        if (_dashCooldownTimeLeft > 0)
-        {
             _dashCooldownTimeLeft -= (float)delta;
         }
-
+        
+        // Handle Wall Slide
+        _isWallSliding = IsOnWall() && !IsOnFloor() && velocity.Y > 0;
+        if (_isWallSliding)
+            velocity.Y = WallSlideSpeed;
+        
         // Handle Jump.
         if (Input.IsActionJustPressed("Jump"))
         {
-            if (IsOnFloor())
-            {
-                // Ground jump
-                velocity.Y = JumpVelocity;
-                _jumpCount = 1;
-                _hasDoubleJumped = false; // Reset double jump flag
-            }
-            else if (_isTouchingWall && !_isDashing)
-            {
-                // Wall jump
+            if (_isWallSliding)
                 velocity.Y = WallJumpVelocity;
-                velocity.X = direction;
-                _jumpCount = 1; // Reset jump count for a double jump
-                _hasDoubleJumped = false;
-            }
-            else if (_jumpCount == 1 && !_hasDoubleJumped)
-            {
-                // Double jump
+            else if (_jumpCount < 2)
                 velocity.Y = JumpVelocity;
-                _hasDoubleJumped = true; // Set double jump flag
-                _jumpCount = 2; // Register the double jump
-            }
-            else if (_jumpCount < 1)
-            {
-                // Allow single jump in air if player hasn't jumped yet
-                velocity.Y = JumpVelocity;
-                _jumpCount = 1;
-                _hasDoubleJumped = true;
-            }
-        }
-
-        // Handle Wall Slide
-        if (_isTouchingWall && !IsOnFloor() && velocity.Y > 0 && direction != 0)
-        {
-            _isWallSliding = true;
-            velocity.Y = Mathf.Min(velocity.Y + 5, WallSlideSpeed);
-            //GD.Print("Wall sliding.");
-        }
-        else
-        {
-            _isWallSliding = false;
+            _jumpCount++;
         }
         
         Velocity = velocity;
         if (!IsActivated)
             Velocity = Vector2.Zero;
+        
         MoveAndSlide();
-
-        // Check if touching a wall
-        _isTouchingWall = IsOnWall();
-
-        // Reset jump count when on the floor after movement.
-        if (IsOnFloor())
-        {
-            // Ensure the velocity is stable before resetting
-            if (Velocity.Y == 0)
-            {
-                _jumpCount = 0;
-                _hasDoubleJumped = false;
-                //GD.Print("Landed. Jump count reset to: " + _jumpCount);
-            }
-        }
     }
 
     /*private bool IsOnWall()

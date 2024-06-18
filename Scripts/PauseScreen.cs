@@ -3,9 +3,15 @@ using System;
 
 public partial class PauseScreen : Control
 {
+	private void OnSettingsPressed()
+	{
+		AddChild(GD.Load<PackedScene>("res://Scenes/Settings.tscn").Instantiate());
+	}
+	
 	private void OnResumePressed()
 	{
 		Visible = false;
+		AudioManager.PlayerAudio.PlayAudio(this, "Unpaused", "SFX");
 		GetTree().Paused = false;
 	}
 
@@ -19,6 +25,10 @@ public partial class PauseScreen : Control
 	{
 		if (Input.IsActionJustPressed("Pause"))
 		{
+			if (Visible)
+				AudioManager.PlayerAudio.PlayAudio(this, "Unpaused", "SFX");
+			else
+				AudioManager.PlayerAudio.PlayAudio(this, "Paused", "SFX");
 			Visible = !Visible;
 			GetTree().Paused = !GetTree().Paused;
 		}

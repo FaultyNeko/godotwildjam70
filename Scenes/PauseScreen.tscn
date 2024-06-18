@@ -69,13 +69,32 @@ text = "Paused"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Settings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.395062
+anchor_right = 0.5625
+anchor_bottom = 0.493828
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_n6yww")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_hk128")
+theme_override_styles/hover = SubResource("StyleBoxTexture_po27i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e7q10")
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
 [node name="Resume" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4375
-anchor_top = 0.493827
+anchor_top = 0.54321
 anchor_right = 0.5625
-anchor_bottom = 0.592593
+anchor_bottom = 0.641976
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
@@ -92,9 +111,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4375
-anchor_top = 0.641975
+anchor_top = 0.691358
 anchor_right = 0.5625
-anchor_bottom = 0.74074
+anchor_bottom = 0.790123
 offset_top = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
@@ -107,6 +126,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_e7q10")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="mouse_entered" from="Settings" to="." method="PlayHover"]
+[connection signal="pressed" from="Settings" to="." method="OnSettingsPressed"]
 [connection signal="mouse_entered" from="Resume" to="." method="PlayHover"]
 [connection signal="pressed" from="Resume" to="." method="OnResumePressed"]
 [connection signal="mouse_entered" from="Quit" to="." method="PlayHover"]

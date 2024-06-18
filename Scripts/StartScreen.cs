@@ -18,7 +18,7 @@ public partial class StartScreen : Control
 	
 	private void OnSettingsPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
+		AddChild(GD.Load<PackedScene>("res://Scenes/Settings.tscn").Instantiate());
 	}
 	
 	private void OnQuitPressed()

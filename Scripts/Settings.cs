@@ -21,12 +21,12 @@ public partial class Settings : Control
 	
 	private void OnBackPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//StartScreen.tscn");
+		QueueFree();
 	}
 
 	private void OnControlsPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//Controls.tscn");
+		AddChild(GD.Load<PackedScene>("res://Scenes/Controls.tscn").Instantiate());
 	}
 
 	private void OnFullscreenToggled(bool toggledOn)

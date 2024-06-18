@@ -1,12 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://ciujyxbpstqtg"]
+[gd_scene load_steps=19 format=3 uid="uid://ciujyxbpstqtg"]
 
 [ext_resource type="Script" path="res://Scripts/Controls.cs" id="1_i4x6b"]
 [ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="2_ew2bo"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_ystb8"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1x2yq"]
-atlas = ExtResource("2_ew2bo")
-region = Rect2(102, 6, 36, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvoen"]
 atlas = ExtResource("2_ew2bo")
@@ -69,16 +65,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i4x6b")
-
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_1x2yq")
-metadata/_edit_use_anchors_ = true
 
 [node name="Controls" type="TextureRect" parent="."]
 layout_mode = 1

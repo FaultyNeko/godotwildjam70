@@ -9,6 +9,7 @@ public partial class AudioManager : Node
 	{
 		PlayerAudio = new AudioManager();
 	}
+	
 	public void PlayAudio(Node parent, string name, string bus)
 	{
 		AudioStreamPlayer temp = new AudioStreamPlayer();

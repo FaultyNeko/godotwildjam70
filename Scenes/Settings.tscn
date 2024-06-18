@@ -1,13 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bb4gmqcvbhd0g"]
+[gd_scene load_steps=16 format=3 uid="uid://bb4gmqcvbhd0g"]
 
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="1_w358u"]
 [ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="2_u2vct"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_lhh53"]
 [ext_resource type="Script" path="res://Scripts/VolumeSlider.cs" id="4_k3mox"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwqxq"]
-atlas = ExtResource("2_u2vct")
-region = Rect2(102, 6, 36, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cl3ao"]
 atlas = ExtResource("2_u2vct")
@@ -58,16 +54,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w358u")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.987654
-offset_bottom = 8.00024
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_cwqxq")
-
 [node name="Settings" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -99,8 +85,8 @@ anchor_left = 0.395833
 anchor_top = 0.272377
 anchor_right = 0.604167
 anchor_bottom = 0.571759
-offset_top = 15.5
-offset_bottom = -15.5
+offset_top = -0.000244141
+offset_bottom = 0.000244141
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -166,7 +152,7 @@ anchor_left = 0.805556
 anchor_top = 0.802469
 anchor_right = 0.930556
 anchor_bottom = 0.901235
-offset_bottom = 3.05176e-05
+offset_bottom = 6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -184,7 +170,7 @@ anchor_left = 0.4375
 anchor_top = 0.777778
 anchor_right = 0.5625
 anchor_bottom = 0.876544
-offset_bottom = 3.05176e-05
+offset_bottom = 6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -197,28 +183,30 @@ text = "Controls"
 
 [node name="FullscreenText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 472.0
-offset_top = 400.0
-offset_right = 614.0
-offset_bottom = 464.0
+anchor_left = 0.409722
+anchor_top = 0.617284
+anchor_right = 0.532986
+anchor_bottom = 0.716049
 theme_override_fonts/font = ExtResource("3_lhh53")
 theme_override_font_sizes/font_size = 50
 text = "Fullscreen"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Fullscreen" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 632.0
-offset_top = 408.0
-offset_right = 680.0
-offset_bottom = 456.0
+anchor_left = 0.548611
+anchor_top = 0.62963
+anchor_right = 0.590278
+anchor_bottom = 0.703704
 focus_mode = 0
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_xm42q")
 texture_pressed = SubResource("AtlasTexture_wlteu")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="Volume/Master" to="Volume/Master" method="_OnValueChanged"]
 [connection signal="value_changed" from="Volume/Music" to="Volume/Music" method="_OnValueChanged"]
