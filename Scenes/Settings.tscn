@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bb4gmqcvbhd0g"]
 
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="1_w358u"]
-[ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="2_u2vct"]
-[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_lhh53"]
+[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="2_u2vct"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Resources/Fonts/Enchanted Land.otf" id="3_lhh53"]
 [ext_resource type="Script" path="res://Scripts/VolumeSlider.cs" id="4_k3mox"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cl3ao"]

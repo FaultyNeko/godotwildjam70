@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://dd4rwu51j0vxs"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_2m6bo"]
-[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_4qglw"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Resources/Fonts/Enchanted Land.otf" id="3_4qglw"]
 [ext_resource type="AudioStream" uid="uid://bl8f4d7qslsck" path="res://Assets/Music/StartScreenMusic.mp3" id="4_2cb4p"]
-[ext_resource type="Texture2D" path="res://Assets/UISprites.png" id="4_uq8h6"]
+[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="4_uq8h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyhk3"]
 atlas = ExtResource("4_uq8h6")
