@@ -33,6 +33,8 @@ project/assembly_name="Wild Game Jam 70"
 
 naming/default_signal_callback_name="_On{node_name}{signal_name}"
 naming/default_signal_callback_to_self_name="_On{signal_name}"
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 
