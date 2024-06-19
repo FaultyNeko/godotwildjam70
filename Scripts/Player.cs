@@ -4,7 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
     public const float Speed = 300.0f;
-    public const float JumpVelocity = -450.0f;
+    public const float JumpVelocity = -400.0f;
     public const float DashSpeed = 600.0f;
     public const float DashDuration = 0.2f;
     public const float DashCooldown = 1.0f;
@@ -16,33 +16,23 @@ public partial class Player : CharacterBody2D
     private bool _isWallSliding;
     private float _dashTimeLeft;
     private float _dashCooldownTimeLeft;
-
-    private AnimationNodeStateMachine _stateMachine;
-    
     public bool IsActivated = true;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
-    public override void _Ready()
-    {
-        //_stateMachine = (AnimationNodeStateMachine)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
-    }
     
     public override void _PhysicsProcess(double delta)
     {
         Vector2 velocity = Velocity;
-        int direction = Input.GetAxis("Left", "Right").CompareTo(0);
 
         // Add the gravity.
         if (!IsOnFloor() && !_isWallSliding && !_isDashing)
             velocity.Y += Gravity * (float)delta;
-        
-        if (IsOnFloor())
+        else
             _jumpCount = 0;
         
         // Handle Dash input
-        if (Input.IsActionJustPressed("Dash") && _dashCooldownTimeLeft <= 0)
+        if (Input.IsActionJustPressed("dash") && _dashCooldownTimeLeft <= 0)
         {
             _dashTimeLeft = DashDuration;
             _dashCooldownTimeLeft = DashCooldown;
@@ -52,12 +42,12 @@ public partial class Player : CharacterBody2D
         if (_dashTimeLeft > 0)
         {
             _dashTimeLeft -= (float)delta;
-            velocity.X = DashSpeed * direction;
+            velocity.X = DashSpeed * Input.GetAxis("left", "right");
             velocity.Y = 0; // Maintain horizontal movement during dash
         }
         else
         {
-            velocity.X = Speed * direction;
+            velocity.X = Speed * Input.GetAxis("left", "right");
             _dashCooldownTimeLeft -= (float)delta;
         }
         
@@ -66,10 +56,11 @@ public partial class Player : CharacterBody2D
         if (_isWallSliding)
             velocity.Y = WallSlideSpeed;
         
+        
         // Handle Jump.
-        if (Input.IsActionJustPressed("Jump"))
+        if (Input.IsActionJustPressed("jump"))
         {
-            if (_isWallSliding && _jumpCount < 3)
+            if (_isWallSliding)
                 velocity.Y = WallJumpVelocity;
             else if (_jumpCount < 2)
                 velocity.Y = JumpVelocity;
@@ -77,16 +68,9 @@ public partial class Player : CharacterBody2D
         }
         
         Velocity = velocity;
-        
         if (!IsActivated)
             Velocity = Vector2.Zero;
         
         MoveAndSlide();
     }
-
-    /*private bool IsOnWall()
-    {
-        //placeholder method untill i figure out how to handel wall jumping further
-        return false;
-    }*/
 }

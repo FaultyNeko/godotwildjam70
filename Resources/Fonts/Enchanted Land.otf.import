@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://da0xmfnu3xvo"
-path="res://.godot/imported/Enchanted Land.otf-bd183d7e821625ab804d764aeb8239d5.fontdata"
+path="res://.godot/imported/Enchanted Land.otf-42bd5f7efe30b932014b64d1f374dbf9.fontdata"
 
 [deps]
 
-source_file="res://Resources/Fonts/Enchanted Land.otf"
-dest_files=["res://.godot/imported/Enchanted Land.otf-bd183d7e821625ab804d764aeb8239d5.fontdata"]
+source_file="res://Assets/Fonts/Enchanted Land.otf"
+dest_files=["res://.godot/imported/Enchanted Land.otf-42bd5f7efe30b932014b64d1f374dbf9.fontdata"]
 
 [params]
 
