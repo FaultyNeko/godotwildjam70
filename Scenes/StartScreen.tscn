@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dd4rwu51j0vxs"]
+[gd_scene load_steps=14 format=3 uid="uid://dd4rwu51j0vxs"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_2m6bo"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_4qglw"]
-[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/UISprites.png" id="4_uq8h6"]
+[ext_resource type="AudioStream" uid="uid://bl8f4d7qslsck" path="res://Assets/Music/StartScreenMusic.mp3" id="4_2cb4p"]
+[ext_resource type="Texture2D" path="res://Assets/UISprites.png" id="4_uq8h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyhk3"]
 atlas = ExtResource("4_uq8h6")
@@ -15,26 +16,26 @@ region = Rect2(48, 48, 48, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_87vee"]
 texture = SubResource("AtlasTexture_c83rh")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0i7w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_45bsa"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 97, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gu7o"]
-texture = SubResource("AtlasTexture_l0i7w")
+texture = SubResource("AtlasTexture_45bsa")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8pa0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_un80m"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qakkd"]
-texture = SubResource("AtlasTexture_s8pa0")
+texture = SubResource("AtlasTexture_un80m")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uo1oc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntjqe"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ontxe"]
-texture = SubResource("AtlasTexture_uo1oc")
+texture = SubResource("AtlasTexture_ntjqe")
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -79,6 +80,7 @@ anchor_bottom = 0.54321
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_4qglw")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_4gu7o")
@@ -87,7 +89,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ontxe")
 text = "Start"
 metadata/_edit_use_anchors_ = true
 
-[node name="Settings" type="Button" parent="."]
+[node name="SettingsButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4375
@@ -96,6 +98,7 @@ anchor_right = 0.5625
 anchor_bottom = 0.691358
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_4qglw")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_4gu7o")
@@ -114,6 +117,7 @@ anchor_bottom = 0.839506
 offset_top = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_4qglw")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_4gu7o")
@@ -122,6 +126,15 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ontxe")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2cb4p")
+volume_db = -10.024
+autoplay = true
+bus = &"Music"
+
+[connection signal="mouse_entered" from="Start" to="." method="PlayHover"]
 [connection signal="pressed" from="Start" to="." method="OnStartPressed"]
-[connection signal="pressed" from="Settings" to="." method="OnSettingsPressed"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="PlayHover"]
+[connection signal="pressed" from="SettingsButton" to="." method="OnSettingsPressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="PlayHover"]
 [connection signal="pressed" from="Quit" to="." method="OnQuitPressed"]

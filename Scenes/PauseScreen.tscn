@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://hcdc78nj1jvo"]
+
+[ext_resource type="Script" path="res://Scripts/PauseScreen.cs" id="1_3dqg1"]
+[ext_resource type="Texture2D" uid="uid://cyg277w3r445m" path="res://Assets/UISprites.png" id="2_q2fd7"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_n6yww"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am67u"]
+atlas = ExtResource("2_q2fd7")
+region = Rect2(50, 2, 45, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i7or"]
+atlas = ExtResource("2_q2fd7")
+region = Rect2(48, 48, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ay6fg"]
+texture = SubResource("AtlasTexture_6i7or")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0i7w"]
+atlas = ExtResource("2_q2fd7")
+region = Rect2(177, 97, 62, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hk128"]
+texture = SubResource("AtlasTexture_l0i7w")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8pa0"]
+atlas = ExtResource("2_q2fd7")
+region = Rect2(177, 129, 62, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_po27i"]
+texture = SubResource("AtlasTexture_s8pa0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo1oc"]
+atlas = ExtResource("2_q2fd7")
+region = Rect2(177, 129, 62, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e7q10"]
+texture = SubResource("AtlasTexture_uo1oc")
+
+[node name="PauseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_3dqg1")
+
+[node name="Controls" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277778
+anchor_top = 0.0864197
+anchor_right = 0.722222
+anchor_bottom = 0.901235
+offset_top = 1.52588e-05
+texture = SubResource("AtlasTexture_am67u")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361111
+anchor_top = 0.0987654
+anchor_right = 0.638889
+anchor_bottom = 0.246914
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_n6yww")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxTexture_ay6fg")
+text = "Paused"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.395062
+anchor_right = 0.5625
+anchor_bottom = 0.493828
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_n6yww")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_hk128")
+theme_override_styles/hover = SubResource("StyleBoxTexture_po27i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e7q10")
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
+[node name="Resume" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.54321
+anchor_right = 0.5625
+anchor_bottom = 0.641976
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_n6yww")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_hk128")
+theme_override_styles/hover = SubResource("StyleBoxTexture_po27i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e7q10")
+text = "Resume"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.691358
+anchor_right = 0.5625
+anchor_bottom = 0.790123
+offset_top = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_n6yww")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_hk128")
+theme_override_styles/hover = SubResource("StyleBoxTexture_po27i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e7q10")
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="Settings" to="." method="PlayHover"]
+[connection signal="pressed" from="Settings" to="." method="OnSettingsPressed"]
+[connection signal="mouse_entered" from="Resume" to="." method="PlayHover"]
+[connection signal="pressed" from="Resume" to="." method="OnResumePressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="PlayHover"]
+[connection signal="pressed" from="Quit" to="." method="OnQuitPressed"]
