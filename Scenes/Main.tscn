@@ -7,6 +7,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Knight" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
+unique_name_in_owner = true
 position = Vector2(32, -632)
 
 [node name="Camera" type="Camera2D" parent="Knight"]
