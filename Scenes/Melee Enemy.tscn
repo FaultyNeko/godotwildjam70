@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cg1hc"]
 size = Vector2(128, 128)
 
-[node name="MeleeEnemy" type="CharacterBody2D"]
+[node name="Melee Enemy" type="CharacterBody2D"]
 script = ExtResource("1_jw5r6")
 
 [node name="Icon" type="Sprite2D" parent="."]

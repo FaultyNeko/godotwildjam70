@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4b627wou363s"]
+
+[ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Resources/icon.svg" id="1_6v8om"]
+[ext_resource type="Script" path="res://Scripts/FlyingEnemy.cs" id="1_agmyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4c6k"]
+size = Vector2(128, 128)
+
+[node name="Flying Enemy" type="CharacterBody2D"]
+modulate = Color(1, 1, 0, 1)
+script = ExtResource("1_agmyi")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_6v8om")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t4c6k")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1.90735e-06, 64)
+scale = Vector2(1191.49, 3.37284e+06)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="VelocityComputed"]

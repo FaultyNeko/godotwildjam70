@@ -22,14 +22,16 @@ public partial class MeleeEnemy : CharacterBody2D
 	{
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 		
+		// We don't want Melee enemies to attempt to resist gravity
 		Vector2 velocity = Velocity;
 		_nav.TargetPosition = _knight.GlobalPosition;
-		velocity = ToLocal(_nav.GetNextPathPosition()).Normalized() * Speed;
+		velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
 		_nav.Velocity = velocity;
 	}
 	
 	private void VelocityComputed(Vector2 safeVelocity)
 	{
+		// Allow the gravity to accumulate over time, because safe velocity would keep resetting it
 		if (!IsOnFloor())
 		{
 			_gravity += 9.81f;
@@ -40,8 +42,10 @@ public partial class MeleeEnemy : CharacterBody2D
 			_gravity = 0;
 			_didJump = false;
 		}
-
-		if (_nav.TargetPosition.Y + 30 < GlobalPosition.Y && !_didJump)
+		
+		// Allows the effects of the jump to persist over time, to make the jump more natural.
+		// The amount being subtracted is constant, so gravity will eventually overcome it.
+		if (_nav.TargetPosition.Y + 30 < GlobalPosition.Y && !_didJump && IsOnWall())
 			_didJump = true;
 		if (_didJump)
 			safeVelocity.Y -= 300f;
