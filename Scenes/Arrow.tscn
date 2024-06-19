@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfykbv8488b6e"]
+
+[ext_resource type="Texture2D" uid="uid://b5125ppu026sr" path="res://Sprites/Arrow.png" id="1_4nsx2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_400kk"]
+size = Vector2(64, 40)
+
+[node name="Arrow" type="Area2D"]
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_4nsx2")
+offset = Vector2(0, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_400kk")
