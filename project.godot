@@ -18,6 +18,7 @@ config/icon="res://Resources/icon.svg"
 [autoload]
 
 AudioManager="*res://Scripts/AudioManager.cs"
+Global="*res://Scripts/Global.cs"
 
 [display]
 
