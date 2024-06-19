@@ -13,7 +13,11 @@ config_version=5
 config/name="Wild Game Jam 70"
 run/main_scene="res://Scenes/StartScreen.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://Assets/icon.svg"
+config/icon="res://Assets/Sprites/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Scenes/default_bus_layout.tres"
 
 [autoload]
 

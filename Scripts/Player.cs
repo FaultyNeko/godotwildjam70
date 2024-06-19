@@ -16,10 +16,17 @@ public partial class Player : CharacterBody2D
     private bool _isWallSliding;
     private float _dashTimeLeft;
     private float _dashCooldownTimeLeft;
+    private AnimationNodeStateMachine _stateMachine;
+    
     public bool IsActivated = true;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+
+    public override void _Ready()
+    {
+        _stateMachine = (AnimationNodeStateMachine)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
+    }
     
     public override void _PhysicsProcess(double delta)
     {
@@ -29,7 +36,8 @@ public partial class Player : CharacterBody2D
         // Add the gravity.
         if (!IsOnFloor() && !_isWallSliding && !_isDashing)
             velocity.Y += Gravity * (float)delta;
-        else
+        
+        if (IsOnFloor())
             _jumpCount = 0;
         
         // Handle Dash input
@@ -60,7 +68,7 @@ public partial class Player : CharacterBody2D
         // Handle Jump.
         if (Input.IsActionJustPressed("Jump"))
         {
-            if (_isWallSliding)
+            if (_isWallSliding && _jumpCount < 3)
                 velocity.Y = WallJumpVelocity;
             else if (_jumpCount < 2)
                 velocity.Y = JumpVelocity;
@@ -68,6 +76,7 @@ public partial class Player : CharacterBody2D
         }
         
         Velocity = velocity;
+        
         if (!IsActivated)
             Velocity = Vector2.Zero;
         
