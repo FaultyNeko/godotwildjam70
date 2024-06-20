@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6gh1eqqy4i12"
-path="res://.godot/imported/UISprites.png-eeca1827dd8c90fcf3618763a559d975.ctex"
+uid="uid://dfok8n2bmqjde"
+path="res://.godot/imported/0019.png-9cb198401c659a9e5cf6d3288192870e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/UISprites.png"
-dest_files=["res://.godot/imported/UISprites.png-eeca1827dd8c90fcf3618763a559d975.ctex"]
+source_file="res://Sprites/PlayerCharacter/Jumping/0019.png"
+dest_files=["res://.godot/imported/0019.png-9cb198401c659a9e5cf6d3288192870e.ctex"]
 
 [params]
 
