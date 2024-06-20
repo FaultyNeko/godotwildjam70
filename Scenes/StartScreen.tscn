@@ -16,26 +16,26 @@ region = Rect2(48, 48, 48, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_87vee"]
 texture = SubResource("AtlasTexture_c83rh")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_45bsa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1ga0"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 97, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gu7o"]
-texture = SubResource("AtlasTexture_45bsa")
+texture = SubResource("AtlasTexture_u1ga0")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_un80m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbivm"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qakkd"]
-texture = SubResource("AtlasTexture_un80m")
+texture = SubResource("AtlasTexture_tbivm")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntjqe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vay0"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ontxe"]
-texture = SubResource("AtlasTexture_ntjqe")
+texture = SubResource("AtlasTexture_4vay0")
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3

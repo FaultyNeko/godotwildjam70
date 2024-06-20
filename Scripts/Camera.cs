@@ -5,12 +5,14 @@ public partial class Camera : Camera2D
 {
 	private Player _player1, _player2;
 	private bool _isPlayer1Active, _isTweenPlaying;
+	private HUD _hud;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_isPlayer1Active = true;
 		_isTweenPlaying = false;
+		_hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
 		
 		foreach (Node node in GetTree().GetNodesInGroup("Player"))
 		{
@@ -19,6 +21,7 @@ public partial class Camera : Camera2D
 			else
 				_player2 = node as Player;
 		}
+		Global.CurrentPlayer = _player1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,6 +37,11 @@ public partial class Camera : Camera2D
 
 	public void SwitchPlayers()
 	{
+		if (Global.CurrentPlayer == _player1)
+			Global.CurrentPlayer = _player2;
+		else
+			Global.CurrentPlayer = _player1;
+		_hud.UpdateStats(Global.CurrentPlayer);
 		_isTweenPlaying = true;
 		Reparent(GetTree().Root.GetChild(0));
 		Tween tween = CreateTween();

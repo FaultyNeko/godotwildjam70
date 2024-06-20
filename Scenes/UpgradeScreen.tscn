@@ -1,0 +1,155 @@
+[gd_scene load_steps=10 format=3 uid="uid://pt2jsv5x0g72"]
+
+[ext_resource type="Script" path="res://Scripts/UpgradeScreen.cs" id="1_4xtx4"]
+[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="2_at8o8"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_j3lkw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srody"]
+atlas = ExtResource("2_at8o8")
+region = Rect2(50, 2, 45, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahdpa"]
+atlas = ExtResource("2_at8o8")
+region = Rect2(48, 48, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_281bd"]
+texture = SubResource("AtlasTexture_ahdpa")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwnn4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrdev"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y37w0"]
+
+[node name="UpgradeScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4xtx4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222222
+anchor_top = 0.0864197
+anchor_right = 0.777778
+anchor_bottom = 0.901235
+offset_top = 1.52588e-05
+texture = SubResource("AtlasTexture_srody")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361111
+anchor_top = 0.0987654
+anchor_right = 0.638889
+anchor_bottom = 0.246914
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_j3lkw")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxTexture_281bd")
+text = "Upgrade"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Warning" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319444
+anchor_top = 0.246914
+anchor_right = 0.680556
+anchor_bottom = 0.422839
+theme_override_fonts/font = ExtResource("3_j3lkw")
+theme_override_font_sizes/font_size = 30
+text = "Using  this  node  will  lock  its  counterpart  in  the  underworld.  Choose  wisely.  You  will  not  be  able  to  return  after  exiting."
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Agility" type="Button" parent="." groups=["UpgradeButtons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.469136
+anchor_right = 0.5625
+anchor_bottom = 0.567902
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_j3lkw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mwnn4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xrdev")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y37w0")
+text = "Agility"
+metadata/_edit_use_anchors_ = true
+
+[node name="Strength" type="Button" parent="." groups=["UpgradeButtons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.604938
+anchor_right = 0.5625
+anchor_bottom = 0.703704
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_j3lkw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mwnn4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xrdev")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y37w0")
+text = "Strength"
+metadata/_edit_use_anchors_ = true
+
+[node name="Vitality" type="Button" parent="." groups=["UpgradeButtons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4375
+anchor_top = 0.740741
+anchor_right = 0.5625
+anchor_bottom = 0.839507
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_j3lkw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mwnn4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xrdev")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y37w0")
+text = "Vitality"
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.652778
+anchor_top = 0.790123
+anchor_right = 0.777778
+anchor_bottom = 0.888889
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_j3lkw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mwnn4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xrdev")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y37w0")
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="Agility" to="." method="PlayHover"]
+[connection signal="mouse_entered" from="Strength" to="." method="PlayHover"]
+[connection signal="mouse_entered" from="Vitality" to="." method="PlayHover"]
+[connection signal="mouse_entered" from="Exit" to="." method="PlayHover"]
+[connection signal="pressed" from="Exit" to="." method="OnExitPressed"]

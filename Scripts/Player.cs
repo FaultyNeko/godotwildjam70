@@ -11,12 +11,16 @@ public partial class Player : CharacterBody2D
     public const float WallJumpVelocity = -400.0f;
     public const float WallSlideSpeed = 100.0f;
 
+    public int Agility, Strength, Vitality, Health;
+    
     private int _jumpCount;
     private bool _isDashing;
     private bool _isWallSliding;
     private float _dashTimeLeft;
     private float _dashCooldownTimeLeft;
-    private AnimationNodeStateMachine _stateMachine;
+    private AnimationNodeStateMachinePlayback _stateMachine;
+    private Marker2D _positionMarker;
+    private HUD _hud;
     
     public bool IsActivated = true;
 
@@ -25,7 +29,10 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
-        _stateMachine = (AnimationNodeStateMachine)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
+        _stateMachine = (AnimationNodeStateMachinePlayback)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
+        _positionMarker = GetNode<Marker2D>("Marker2D");
+        Health = 100;
+        _hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
     }
     
     public override void _PhysicsProcess(double delta)
@@ -60,6 +67,9 @@ public partial class Player : CharacterBody2D
             _dashCooldownTimeLeft -= (float)delta;
         }
         
+        if (direction != 0)
+            _positionMarker.Scale = new Vector2(direction, 1);
+        
         // Handle Wall Slide
         _isWallSliding = IsOnWall() && !IsOnFloor() && velocity.Y > 0;
         if (_isWallSliding)
@@ -69,10 +79,15 @@ public partial class Player : CharacterBody2D
         if (Input.IsActionJustPressed("Jump"))
         {
             if (_isWallSliding && _jumpCount < 3)
+            {
                 velocity.Y = WallJumpVelocity;
+                _jumpCount++;
+            }
             else if (_jumpCount < 2)
+            {
                 velocity.Y = JumpVelocity;
-            _jumpCount++;
+                _jumpCount++;
+            }
         }
         
         Velocity = velocity;
@@ -82,10 +97,29 @@ public partial class Player : CharacterBody2D
         
         MoveAndSlide();
     }
-
-    /*private bool IsOnWall()
+    
+    public void ChangeStat(string stat, int value)
     {
-        //placeholder method untill i figure out how to handel wall jumping further
-        return false;
-    }*/
+        switch (stat)
+        {
+            case "Agility":
+                Agility += value;
+                break;
+            case "Strength":
+                Strength += value;
+                break;
+            case "Vitality":
+                Vitality += value;
+                break;
+        }
+        _hud.UpdateStats(this);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        _hud.UpdateHealth(this);
+        if (Health <= 0)
+            GetTree().ChangeSceneToFile("Scenes//DeathScreen.tscn");
+    }
 }

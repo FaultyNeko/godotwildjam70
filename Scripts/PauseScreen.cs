@@ -30,7 +30,7 @@ public partial class PauseScreen : Control
 			else
 				AudioManager.PlayerAudio.PlayAudio(this, "Paused", "SFX");
 			Visible = !Visible;
-			GetTree().Paused = !GetTree().Paused;
+			GetTree().Paused = Visible;
 		}
 	}
 

@@ -3,13 +3,12 @@ using System;
 
 public partial class Global : Node
 {
-	public static int KnightHealth, DemonHealth;
+	public static Player CurrentPlayer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		KnightHealth = 100;
-		DemonHealth = 100;
+		CurrentPlayer = (Player)GetTree().GetFirstNodeInGroup("Player");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
