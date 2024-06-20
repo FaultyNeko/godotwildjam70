@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdwgp0waiqnap"]
+
+[ext_resource type="Texture2D" uid="uid://b8hmks2pf0576" path="res://Sprites/Egg.png" id="1_sqxdw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f6lxh"]
+radius = 28.0
+height = 72.0
+
+[node name="Egg" type="RigidBody2D"]
+max_contacts_reported = 3
+contact_monitor = true
+
+[node name="Egg" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_sqxdw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_f6lxh")
+
+[connection signal="body_entered" from="." to="." method="BodyEntered"]
