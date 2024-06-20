@@ -13,7 +13,8 @@ config_version=5
 config/name="Wild Game Jam 70"
 run/main_scene="res://Scenes/StartScreen.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://Assets/Sprites/icon.svg"
+boot_splash/image="res://Assets/Sprites/GWJSplashScreen.png"
+config/icon="res://Assets/Sprites/GWJSplashScreen.png"
 
 [audio]
 

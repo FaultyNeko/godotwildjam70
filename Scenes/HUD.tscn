@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://5i8ntt4jgwdm"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.cs" id="1_8hh6j"]
+[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="2_nl5p4"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_xt7ep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0kit"]
+atlas = ExtResource("2_nl5p4")
+region = Rect2(0, 180, 48, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ushkd"]
+atlas = ExtResource("2_nl5p4")
+region = Rect2(0, 116, 48, 8)
+
+[node name="HUD" type="Control" groups=["HUD"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hh6j")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.118056
+anchor_top = 0.839506
+anchor_right = 0.340278
+anchor_bottom = 0.901235
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_l0kit")
+texture_progress = SubResource("AtlasTexture_ushkd")
+metadata/_edit_use_anchors_ = true
+
+[node name="HPLabel" type="Label" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.3125
+anchor_top = -0.2
+anchor_right = -0.0976563
+anchor_bottom = 1.275
+theme_override_fonts/font = ExtResource("3_xt7ep")
+theme_override_font_sizes/font_size = 50
+text = "HP"
+metadata/_edit_use_anchors_ = true
+
+[node name="HPValue" type="Label" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("3_xt7ep")
+theme_override_font_sizes/font_size = 30
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StatList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0486111
+anchor_top = 0.595679
+anchor_right = 0.164063
+anchor_bottom = 0.802469
+metadata/_edit_use_anchors_ = true
+
+[node name="AgilityLabel" type="Label" parent="StatList"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xt7ep")
+theme_override_font_sizes/font_size = 35
+text = "Agility - 0"
+
+[node name="StrengthLabel" type="Label" parent="StatList"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xt7ep")
+theme_override_font_sizes/font_size = 35
+text = "Strength - 0"
+
+[node name="StaminaLabel" type="Label" parent="StatList"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xt7ep")
+theme_override_font_sizes/font_size = 35
+text = "Stamina - 0"
