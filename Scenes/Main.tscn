@@ -6402,6 +6402,20 @@ position = Vector2(75.5, -71.5)
 shape = SubResource("RectangleShape2D_16ywy")
 
 [node name="Tutorialpopup" parent="Tutorial1" instance=ExtResource("16_jg3bi")]
+position = Vector2(-49, -140)
+
+[node name="Tutorial2" type="Area2D" parent="."]
+position = Vector2(1420, -820)
+script = ExtResource("15_etu2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial2"]
+position = Vector2(75.5, -71.5)
+shape = SubResource("RectangleShape2D_16ywy")
+
+[node name="Tutorialpopup" parent="Tutorial2" instance=ExtResource("16_jg3bi")]
+position = Vector2(55, -114)
 
 [connection signal="body_entered" from="Tutorial1" to="Tutorial1" method="_Onbody_entered"]
 [connection signal="body_exited" from="Tutorial1" to="Tutorial1" method="_Onbody_exited"]
+[connection signal="body_entered" from="Tutorial2" to="Tutorial2" method="_Onbody_entered"]
+[connection signal="body_exited" from="Tutorial2" to="Tutorial2" method="_Onbody_exited"]
