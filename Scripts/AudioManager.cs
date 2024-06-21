@@ -13,6 +13,7 @@ public partial class AudioManager : Node
 	public void PlayAudio(Node parent, string name, string bus)
 	{
 		AudioStreamPlayer temp = new AudioStreamPlayer();
+		temp.Name = name;
 		temp.Stream = GD.Load<AudioStream>("res://Assets/" + bus + "/" + name + ".wav");
 		temp.Bus = bus;
 		parent.AddChild(temp);

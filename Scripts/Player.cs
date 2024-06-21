@@ -18,6 +18,7 @@ public partial class Player : CharacterBody2D
     private AnimationNodeStateMachinePlayback _stateMachine;
     private Marker2D _positionMarker;
     private HUD _hud;
+    private AudioStreamPlayer _stepPlayer;
     
     public bool IsActivated = true;
     public int Damage = 25;
@@ -31,6 +32,7 @@ public partial class Player : CharacterBody2D
         _positionMarker = GetNode<Marker2D>("Marker2D");
         Health = 100;
         _hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
+        _stepPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
     }
     
     public override void _PhysicsProcess(double delta)
@@ -81,8 +83,8 @@ public partial class Player : CharacterBody2D
             _positionMarker.Scale = new Vector2(direction, 1);
             if (IsOnFloor())
                 _stateMachine.Travel("Run");
-            //if (!_isDashing && IsOnFloor())
-            //    AudioManager.PlayerAudio.PlayAudio(this, "Step", "SFX");
+            if (!_isDashing && IsOnFloor() && !_stepPlayer.Playing && FindChild("Land") == null)
+                _stepPlayer.Play();
         }
 
         // Handle Wall Slide
@@ -124,7 +126,10 @@ public partial class Player : CharacterBody2D
         
         // Handle Landing SFX
         if (!_isOnGround && IsOnFloor())
+        {
+            _stateMachine.Travel("Land");
             AudioManager.PlayerAudio.PlayAudio(this, "Land", "SFX");
+        }
         _isOnGround = IsOnFloor();
         
         Velocity = velocity;
