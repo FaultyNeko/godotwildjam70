@@ -18,6 +18,8 @@ public partial class UpgradeScreen : Control
 		{
 			button.Pressed += () => OnButtonPressed(button);
 		}
+		
+		AudioManager.PlayerAudio.PlayAudio(this, "Upgrade", "SFX");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

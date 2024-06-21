@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://5oc5bcd4xmqr"
-path="res://.godot/imported/HoverButton.wav-e7e1564bf89797522e8345d6d0b288c3.sample"
+uid="uid://ccbb75wpciwtj"
+path="res://.godot/imported/Upgrade.wav-bbb0c2ebef9f0bb5a022f5f97dc2e88d.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/HoverButton.wav"
-dest_files=["res://.godot/imported/HoverButton.wav-e7e1564bf89797522e8345d6d0b288c3.sample"]
+source_file="res://Assets/SFX/Upgrade.wav"
+dest_files=["res://.godot/imported/Upgrade.wav-bbb0c2ebef9f0bb5a022f5f97dc2e88d.sample"]
 
 [params]
 

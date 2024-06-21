@@ -38,9 +38,16 @@ public partial class Camera : Camera2D
 	public void SwitchPlayers()
 	{
 		if (Global.CurrentPlayer == _player1)
+		{
+			AudioManager.PlayerAudio.PlayAudio(this, "SwapToHell", "SFX");
 			Global.CurrentPlayer = _player2;
+		}
 		else
+		{
+			AudioManager.PlayerAudio.PlayAudio(this, "SwapToRegal", "SFX");
 			Global.CurrentPlayer = _player1;
+		}
+
 		_hud.UpdateStats(Global.CurrentPlayer);
 		_isTweenPlaying = true;
 		Reparent(GetTree().Root.GetChild(0));

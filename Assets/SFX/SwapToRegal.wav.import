@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://5oc5bcd4xmqr"
-path="res://.godot/imported/HoverButton.wav-e7e1564bf89797522e8345d6d0b288c3.sample"
+uid="uid://d1jkf2ubme1h3"
+path="res://.godot/imported/SwapToRegal.wav-d067f92cbb28b323a187b31a89b6f3cc.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/HoverButton.wav"
-dest_files=["res://.godot/imported/HoverButton.wav-e7e1564bf89797522e8345d6d0b288c3.sample"]
+source_file="res://Assets/SFX/SwapToRegal.wav"
+dest_files=["res://.godot/imported/SwapToRegal.wav-d067f92cbb28b323a187b31a89b6f3cc.sample"]
 
 [params]
 

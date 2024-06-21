@@ -40,6 +40,8 @@ public partial class HUD : Control
 
 	public void UpdateHealth(Player player)
 	{
+		if (player.Health > _healthBar.MaxValue)
+			_healthBar.MaxValue = player.Health;
 		_healthBar.Value = player.Health;
 		_healthBarText.Text = player.Health + "/" + _healthBar.MaxValue;
 	}

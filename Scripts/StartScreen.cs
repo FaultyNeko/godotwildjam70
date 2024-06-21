@@ -13,6 +13,7 @@ public partial class StartScreen : Control
 	
 	private void OnStartPressed()
 	{
+		//AudioManager.PlayerAudio.PlayAudio(this, "StartGame", "Music");
 		GetTree().ChangeSceneToFile("Scenes//Main.tscn");
 	}
 	
