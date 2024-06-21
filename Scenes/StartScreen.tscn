@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dd4rwu51j0vxs"]
+[gd_scene load_steps=15 format=3 uid="uid://dd4rwu51j0vxs"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_2m6bo"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_4qglw"]
 [ext_resource type="AudioStream" uid="uid://bl8f4d7qslsck" path="res://Assets/Music/StartScreenMusic.mp3" id="4_2cb4p"]
 [ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="4_uq8h6"]
+[ext_resource type="Texture2D" uid="uid://byqe40ut01ipi" path="res://Assets/Sprites/TakeoverWildcard.png" id="5_0juga"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyhk3"]
 atlas = ExtResource("4_uq8h6")
@@ -16,26 +17,26 @@ region = Rect2(48, 48, 48, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_87vee"]
 texture = SubResource("AtlasTexture_c83rh")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_45bsa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1ga0"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 97, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4gu7o"]
-texture = SubResource("AtlasTexture_45bsa")
+texture = SubResource("AtlasTexture_u1ga0")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_un80m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbivm"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qakkd"]
-texture = SubResource("AtlasTexture_un80m")
+texture = SubResource("AtlasTexture_tbivm")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntjqe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vay0"]
 atlas = ExtResource("4_uq8h6")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ontxe"]
-texture = SubResource("AtlasTexture_ntjqe")
+texture = SubResource("AtlasTexture_4vay0")
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -131,6 +132,32 @@ stream = ExtResource("4_2cb4p")
 volume_db = -10.024
 autoplay = true
 bus = &"Music"
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0555556
+anchor_top = 0.851852
+anchor_right = 0.291667
+anchor_bottom = 0.949074
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_4qglw")
+theme_override_font_sizes/font_size = 25
+text = "SFX from Leohpaz
+Tileset and UI sprites from BDragon1727"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.833333
+anchor_top = 0.654321
+anchor_right = 0.930556
+anchor_bottom = 0.925926
+texture = ExtResource("5_0juga")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="Start" to="." method="PlayHover"]
 [connection signal="pressed" from="Start" to="." method="OnStartPressed"]

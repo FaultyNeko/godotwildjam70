@@ -3,7 +3,6 @@ using System;
 
 public partial class FlyingEnemy : CharacterBody2D
 {
-	private Player _knight;
 	private NavigationAgent2D _nav;
 	private Marker2D _marker;
 	private PackedScene _egg;
@@ -13,7 +12,6 @@ public partial class FlyingEnemy : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_knight = GetNode<Player>("%Knight");
 		_nav = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_marker = GetNode<Marker2D>("Marker2D");
 		_egg = GD.Load<PackedScene>("res://Scenes/Egg.tscn");
@@ -30,13 +28,11 @@ public partial class FlyingEnemy : CharacterBody2D
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 		
 		// Flying enemies can't go up or down
-		_nav.TargetPosition = _knight.GlobalPosition;
+		_nav.TargetPosition = Global.CurrentPlayer.GlobalPosition;
 		Vector2 velocity = Vector2.Zero;
 		if (Math.Abs(GlobalPosition.X - _nav.TargetPosition.X) > 10f)
 			velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
 		_nav.Velocity = velocity;
-		
-		
 	}
 	
 	private void VelocityComputed(Vector2 safeVelocity)
@@ -48,6 +44,7 @@ public partial class FlyingEnemy : CharacterBody2D
 	private void LayEgg()
 	{
 		RigidBody2D egg = _egg.Instantiate<RigidBody2D>();
+		AudioManager.PlayerAudio.PlayAudio(this, "EnemyEgg", "SFX");
 		AddChild(egg);
 		egg.Position = _marker.Position with {Y = _marker.Position.Y + 40};
 		egg.BodyEntered += (body) => EggCollision(body);
@@ -58,7 +55,7 @@ public partial class FlyingEnemy : CharacterBody2D
 	{
 		if (body.IsInGroup("Player"))
 		{
-			// Damage the player TODO
+			((Player)body).TakeDamage(10);
 		}
 	}
 }

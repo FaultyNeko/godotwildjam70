@@ -5,11 +5,21 @@ public partial class Camera : Camera2D
 {
 	private Player _player1, _player2;
 	private bool _isPlayer1Active, _isTweenPlaying;
+<<<<<<< HEAD
+=======
+	private HUD _hud;
+	private Timer _timer;
+	private AudioStreamPlayer _swapSFX;
+	
+>>>>>>> solar-real
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_isPlayer1Active = true;
 		_isTweenPlaying = false;
+		_hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
+		_timer = GetNode<Timer>("Timer");
+		_swapSFX = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		
 		foreach (Node node in GetTree().GetNodesInGroup("Player"))
 		{
@@ -18,6 +28,7 @@ public partial class Camera : Camera2D
 			else
 				_player2 = node as Player;
 		}
+		Global.CurrentPlayer = _player1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,13 +37,49 @@ public partial class Camera : Camera2D
 		_player1.IsActivated = _isPlayer1Active;
 		_player2.IsActivated = !_isPlayer1Active;
 		PositionSmoothingEnabled = !_isTweenPlaying;
+<<<<<<< HEAD
 			
 		if (Input.IsActionJustPressed("ui_up") && !_isTweenPlaying)
 			switchPlayers();
+=======
+
+		if (Input.IsActionPressed("Swap") && !_isTweenPlaying && Global.CurrentPlayer.IsOnFloor())
+		{
+			Global.CurrentPlayer.IsActivated = false;
+			if (!_swapSFX.Playing)
+				_swapSFX.Play();
+			if (_timer.IsStopped())
+				_timer.Start();
+		}
+
+		if (Input.IsActionJustReleased("Swap"))
+		{
+			Global.CurrentPlayer.IsActivated = true;
+			_swapSFX.Stop();
+			_timer.Stop();
+		}
+	}
+
+	private void OnTimerTimeout()
+	{
+		SwitchPlayers();
+>>>>>>> solar-real
 	}
 
 	public void switchPlayers()
 	{
+		if (Global.CurrentPlayer == _player1)
+		{
+			AudioManager.PlayerAudio.PlayAudio(this, "SwapToHell", "SFX");
+			Global.CurrentPlayer = _player2;
+		}
+		else
+		{
+			AudioManager.PlayerAudio.PlayAudio(this, "SwapToRegal", "SFX");
+			Global.CurrentPlayer = _player1;
+		}
+
+		_hud.UpdateStats(Global.CurrentPlayer);
 		_isTweenPlaying = true;
 		Reparent(GetTree().Root.GetChild(0));
 		Tween tween = CreateTween();

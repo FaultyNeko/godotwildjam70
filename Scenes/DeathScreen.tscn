@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://mlc5cpk72b0e"]
+
+[ext_resource type="Script" path="res://Scripts/DeathScreen.cs" id="1_utxyp"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="2_p55dk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vy6l4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbpci"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oplak"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6ghk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsowo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0vbg"]
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_utxyp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319444
+anchor_top = 0.0864198
+anchor_right = 0.679688
+anchor_bottom = 0.356481
+theme_override_fonts/font = ExtResource("2_p55dk")
+theme_override_font_sizes/font_size = 150
+text = "You failed."
+metadata/_edit_use_anchors_ = true
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444444
+anchor_top = 0.530864
+anchor_right = 0.555556
+anchor_bottom = 0.62963
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_p55dk")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vy6l4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pbpci")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oplak")
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444444
+anchor_top = 0.691358
+anchor_right = 0.555556
+anchor_bottom = 0.790123
+offset_top = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_p55dk")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h6ghk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jsowo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c0vbg")
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Retry" to="." method="OnRetryPressed"]

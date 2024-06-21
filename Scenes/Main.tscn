@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8jgu5vhnly84"]
+[gd_scene load_steps=13 format=3 uid="uid://c8jgu5vhnly84"]
 
 [ext_resource type="PackedScene" uid="uid://cci8infj626o0" path="res://Scenes/Player.tscn" id="2_gxgar"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_wh3qp"]
 [ext_resource type="Texture2D" uid="uid://23npfs33x84x" path="res://Assets/TileSets/Terrain TileSet.png" id="3_3t11n"]
-[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="4_pe4k4"]
-[ext_resource type="PackedScene" path="res://Scenes/PauseScreen.tscn" id="5_cdogp"]
-[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="5_ykeji"]
+[ext_resource type="AudioStream" uid="uid://cvcbmm7ow0ete" path="res://Assets/SFX/StartGame.wav" id="3_bq0r7"]
+[ext_resource type="PackedScene" uid="uid://5i8ntt4jgwdm" path="res://Scenes/HUD.tscn" id="4_60c6g"]
+[ext_resource type="PackedScene" uid="uid://hcdc78nj1jvo" path="res://Scenes/PauseScreen.tscn" id="5_cdogp"]
+[ext_resource type="PackedScene" uid="uid://dhnrwr5rcoh8e" path="res://Scenes/UpgradeNode.tscn" id="8_bnx7s"]
+[ext_resource type="PackedScene" uid="uid://b4b627wou363s" path="res://Scenes/FlyingEnemy.tscn" id="8_yyg81"]
+[ext_resource type="PackedScene" uid="uid://b8gn8l8wchjm0" path="res://Scenes/MeleeEnemy.tscn" id="9_wlvf7"]
+[ext_resource type="PackedScene" uid="uid://dr8jprty1v0js" path="res://Scenes/RangedEnemy.tscn" id="10_68i8q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dq4ps"]
 texture = ExtResource("3_3t11n")
@@ -2921,26 +2925,25 @@ texture = ExtResource("3_3t11n")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dq4ps")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0kit"]
-atlas = ExtResource("5_ykeji")
-region = Rect2(0, 180, 48, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ushkd"]
-atlas = ExtResource("5_ykeji")
-region = Rect2(0, 116, 48, 8)
-
 [node name="Main" type="Node2D"]
 
 [node name="Knight" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
-position = Vector2(160, -621)
+position = Vector2(160, -632)
 
 [node name="Camera" type="Camera2D" parent="Knight"]
 position_smoothing_enabled = true
 script = ExtResource("2_wh3qp")
 
+[node name="Timer" type="Timer" parent="Knight/Camera"]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Knight/Camera"]
+stream = ExtResource("3_bq0r7")
+bus = &"SFX"
+
 [node name="Demon" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
 modulate = Color(0.996078, 0.0196078, 0, 1)
-position = Vector2(160, 1944)
+position = Vector2(160, 1936)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(4, 4)
@@ -2952,52 +2955,7 @@ layer_0/tile_data = PackedInt32Array(-589824, 65536, 0, -589823, 65536, 0, -5898
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/HUD"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.118056
-anchor_top = 0.839506
-anchor_right = 0.340278
-anchor_bottom = 0.901235
-value = 100.0
-nine_patch_stretch = true
-texture_under = SubResource("AtlasTexture_l0kit")
-texture_progress = SubResource("AtlasTexture_ushkd")
-metadata/_edit_use_anchors_ = true
-
-[node name="HPLabel" type="Label" parent="CanvasLayer/HUD/HealthBar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.3125
-anchor_top = -0.2
-anchor_right = -0.0976563
-anchor_bottom = 1.275
-theme_override_fonts/font = ExtResource("4_pe4k4")
-theme_override_font_sizes/font_size = 50
-text = "HP"
-metadata/_edit_use_anchors_ = true
-
-[node name="HPValue" type="Label" parent="CanvasLayer/HUD/HealthBar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.1
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("4_pe4k4")
-theme_override_font_sizes/font_size = 30
-text = "100/100"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_60c6g")]
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("5_cdogp")]
 process_mode = 3
@@ -3010,3 +2968,18 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="UpgradeNode" parent="." instance=ExtResource("8_bnx7s")]
+position = Vector2(1008, -816)
+
+[node name="Flying Enemy" parent="." instance=ExtResource("8_yyg81")]
+position = Vector2(1640, -1192)
+
+[node name="Melee Enemy" parent="." instance=ExtResource("9_wlvf7")]
+position = Vector2(2904, -736)
+
+[node name="Ranged Enemy" parent="." instance=ExtResource("10_68i8q")]
+position = Vector2(2808, -1168)
+
+[connection signal="timeout" from="Knight/Camera/Timer" to="Knight/Camera" method="OnTimerTimeout"]
+[connection signal="body_entered" from="UpgradeNode" to="CanvasLayer/HUD" method="UpgradeNodeEntered"]

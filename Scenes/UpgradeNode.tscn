@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhnrwr5rcoh8e"]
+
+[ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="1_pe4vp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tokij"]
+size = Vector2(118, 122)
+
+[node name="UpgradeNode" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tokij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pe4vp")

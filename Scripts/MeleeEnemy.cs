@@ -3,7 +3,6 @@ namespace WildGameJam70.Scripts;
 
 public partial class MeleeEnemy : CharacterBody2D
 {
-	private Player _knight;
 	private NavigationAgent2D _nav;
 	private float _gravity;
 	private bool _didJump;
@@ -13,7 +12,6 @@ public partial class MeleeEnemy : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_knight = GetNode<Player>("%Knight");
 		_nav = GetNode<NavigationAgent2D>("NavigationAgent2D");
 	}
 
@@ -24,7 +22,7 @@ public partial class MeleeEnemy : CharacterBody2D
 		
 		// We don't want Melee enemies to attempt to resist gravity
 		Vector2 velocity = Velocity;
-		_nav.TargetPosition = _knight.GlobalPosition;
+		_nav.TargetPosition = Global.CurrentPlayer.GlobalPosition;
 		velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
 		_nav.Velocity = velocity;
 	}
