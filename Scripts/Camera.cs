@@ -6,6 +6,8 @@ public partial class Camera : Camera2D
 	private Player _player1, _player2;
 	private bool _isPlayer1Active, _isTweenPlaying;
 	private HUD _hud;
+	private Timer _timer;
+	private AudioStreamPlayer _swapSFX;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -13,6 +15,8 @@ public partial class Camera : Camera2D
 		_isPlayer1Active = true;
 		_isTweenPlaying = false;
 		_hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
+		_timer = GetNode<Timer>("Timer");
+		_swapSFX = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		
 		foreach (Node node in GetTree().GetNodesInGroup("Player"))
 		{
@@ -30,9 +34,27 @@ public partial class Camera : Camera2D
 		_player1.IsActivated = _isPlayer1Active;
 		_player2.IsActivated = !_isPlayer1Active;
 		PositionSmoothingEnabled = !_isTweenPlaying;
-			
-		if (Input.IsActionJustPressed("Swap") && !_isTweenPlaying)
-			SwitchPlayers();
+
+		if (Input.IsActionPressed("Swap") && !_isTweenPlaying && Global.CurrentPlayer.IsOnFloor())
+		{
+			Global.CurrentPlayer.IsActivated = false;
+			if (!_swapSFX.Playing)
+				_swapSFX.Play();
+			if (_timer.IsStopped())
+				_timer.Start();
+		}
+
+		if (Input.IsActionJustReleased("Swap"))
+		{
+			Global.CurrentPlayer.IsActivated = true;
+			_swapSFX.Stop();
+			_timer.Stop();
+		}
+	}
+
+	private void OnTimerTimeout()
+	{
+		SwitchPlayers();
 	}
 
 	public void SwitchPlayers()
