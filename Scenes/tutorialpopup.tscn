@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://csrew40voemy3"]
+
+[ext_resource type="Script" path="res://Scripts/Popup.cs" id="1_05xha"]
+
+[node name="Tutorialpopup" type="Node2D"]
+script = ExtResource("1_05xha")
+
+[node name="tutorial1" type="Panel" parent="."]
+offset_right = 208.7
+offset_bottom = 51.92
+
+[node name="Label" type="Label" parent="tutorial1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

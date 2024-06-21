@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfykbv8488b6e"]
 
-[ext_resource type="Texture2D" uid="uid://b5125ppu026sr" path="res://Sprites/Arrow.png" id="1_4nsx2"]
+[ext_resource type="Texture2D" uid="uid://b5125ppu026sr" path="res://Assets/Sprites/Arrow.png" id="1_4nsx2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_400kk"]
 size = Vector2(64, 40)

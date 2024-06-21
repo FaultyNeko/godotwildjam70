@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdwgp0waiqnap"]
 
-[ext_resource type="Texture2D" uid="uid://b8hmks2pf0576" path="res://Sprites/Egg.png" id="1_sqxdw"]
+[ext_resource type="Texture2D" uid="uid://b8hmks2pf0576" path="res://Assets/Sprites/Egg.png" id="1_sqxdw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f6lxh"]
 radius = 28.0
