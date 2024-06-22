@@ -1,0 +1,24 @@
+{
+    "tracks": [
+        {
+            "name": "Regal",
+            "stream": [
+                "res://Assets/Music/Regal.ogg",
+                "res://Assets/Music/RegalOverlay.ogg"
+            ]
+        },
+        {
+            "name": "Hell",
+            "stream": [
+                "res://Assets/Music/Hell.ogg",
+                "res://Assets/Music/HellOverlay.ogg"
+            ]
+        },
+        {
+            "name": "Title",
+            "stream": [
+                "res://Assets/Music/StartScreenMusic.mp3"
+            ]
+        }
+    ]
+}
