@@ -5,13 +5,10 @@ public partial class Camera : Camera2D
 {
 	private Player _player1, _player2;
 	private bool _isPlayer1Active, _isTweenPlaying;
-<<<<<<< HEAD
-=======
 	private HUD _hud;
 	private Timer _timer;
 	private AudioStreamPlayer _swapSFX;
 	
->>>>>>> solar-real
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -37,11 +34,9 @@ public partial class Camera : Camera2D
 		_player1.IsActivated = _isPlayer1Active;
 		_player2.IsActivated = !_isPlayer1Active;
 		PositionSmoothingEnabled = !_isTweenPlaying;
-<<<<<<< HEAD
-			
-		if (Input.IsActionJustPressed("ui_up") && !_isTweenPlaying)
-			switchPlayers();
-=======
+
+		if (!_isTweenPlaying && GlobalPosition != Global.CurrentPlayer.GlobalPosition)
+			GlobalPosition = Global.CurrentPlayer.GlobalPosition;
 
 		if (Input.IsActionPressed("Swap") && !_isTweenPlaying && Global.CurrentPlayer.IsOnFloor())
 		{
@@ -63,10 +58,9 @@ public partial class Camera : Camera2D
 	private void OnTimerTimeout()
 	{
 		SwitchPlayers();
->>>>>>> solar-real
 	}
 
-	public void switchPlayers()
+	public void SwitchPlayers()
 	{
 		if (Global.CurrentPlayer == _player1)
 		{
@@ -80,6 +74,7 @@ public partial class Camera : Camera2D
 		}
 
 		_hud.UpdateStats(Global.CurrentPlayer);
+		_hud.UpdateHealth(Global.CurrentPlayer);
 		_isTweenPlaying = true;
 		Reparent(GetTree().Root.GetChild(0));
 		Tween tween = CreateTween();

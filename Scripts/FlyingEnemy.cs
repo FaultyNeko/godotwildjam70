@@ -33,6 +33,7 @@ public partial class FlyingEnemy : CharacterBody2D
 		if (Math.Abs(GlobalPosition.X - _nav.TargetPosition.X) > 10f)
 			velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
 		_nav.Velocity = velocity;
+		_marker.Scale = new Vector2(velocity.X.CompareTo(0), 1);
 	}
 	
 	private void VelocityComputed(Vector2 safeVelocity)
@@ -44,11 +45,11 @@ public partial class FlyingEnemy : CharacterBody2D
 	private void LayEgg()
 	{
 		RigidBody2D egg = _egg.Instantiate<RigidBody2D>();
-		AudioManager.PlayerAudio.PlayAudio(this, "EnemyEgg", "SFX");
+		AudioManager.PlayerAudio.PlayPositionalAudio(this, "EnemyEgg", "SFX");
 		AddChild(egg);
 		egg.Position = _marker.Position with {Y = _marker.Position.Y + 40};
 		egg.BodyEntered += (body) => EggCollision(body);
-		egg.BodyEntered += (body) => egg.QueueFree();
+		egg.BodyEntered += (body) => egg.CallDeferred(MethodName.QueueFree);
 	}
 
 	private void EggCollision(Node body)

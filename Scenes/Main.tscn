@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8jgu5vhnly84"]
+[gd_scene load_steps=14 format=3 uid="uid://c8jgu5vhnly84"]
 
 [ext_resource type="PackedScene" uid="uid://cci8infj626o0" path="res://Scenes/Player.tscn" id="2_gxgar"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_wh3qp"]
 [ext_resource type="Texture2D" uid="uid://23npfs33x84x" path="res://Assets/TileSets/Terrain TileSet.png" id="3_3t11n"]
-[ext_resource type="AudioStream" uid="uid://cvcbmm7ow0ete" path="res://Assets/SFX/StartGame.wav" id="3_bq0r7"]
-[ext_resource type="PackedScene" uid="uid://5i8ntt4jgwdm" path="res://Scenes/HUD.tscn" id="4_60c6g"]
+[ext_resource type="AudioStream" uid="uid://cvcbmm7ow0ete" path="res://Assets/SFX/startgame.wav" id="3_bq0r7"]
+[ext_resource type="PackedScene" uid="uid://d3q7dujcumhpp" path="res://Scenes/HUD.tscn" id="4_60c6g"]
 [ext_resource type="PackedScene" uid="uid://hcdc78nj1jvo" path="res://Scenes/PauseScreen.tscn" id="5_cdogp"]
 [ext_resource type="PackedScene" uid="uid://dhnrwr5rcoh8e" path="res://Scenes/UpgradeNode.tscn" id="8_bnx7s"]
 [ext_resource type="PackedScene" uid="uid://b4b627wou363s" path="res://Scenes/FlyingEnemy.tscn" id="8_yyg81"]
@@ -2925,6 +2925,12 @@ texture = ExtResource("3_3t11n")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dq4ps")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2dmhc"]
+vertices = PackedVector2Array(3485, -681, 26, -610, 33, -2166, 3478, -2245)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, -600, 24, -2176, 3488, -2256, 3496, -672)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="Main" type="Node2D"]
 
 [node name="Knight" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
@@ -2980,6 +2986,9 @@ position = Vector2(2904, -736)
 
 [node name="Ranged Enemy" parent="." instance=ExtResource("10_68i8q")]
 position = Vector2(2808, -1168)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_2dmhc")
 
 [connection signal="timeout" from="Knight/Camera/Timer" to="Knight/Camera" method="OnTimerTimeout"]
 [connection signal="body_entered" from="UpgradeNode" to="CanvasLayer/HUD" method="UpgradeNodeEntered"]

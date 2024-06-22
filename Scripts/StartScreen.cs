@@ -3,6 +3,14 @@ using System;
 
 public partial class StartScreen : Control
 {
+	public override void _Ready()
+	{
+		var volumeConfigDic = ResourceLoader.Load<SaveConfig>("user://saves/settings.tres", "", ResourceLoader.CacheMode.Ignore).DataDic;
+
+		foreach (string key in volumeConfigDic.Keys)
+			AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(key), Mathf.LinearToDb((float)volumeConfigDic[key]));
+	}
+	
 	private void OnStartPressed()
 	{
 		//AudioManager.PlayerAudio.PlayAudio(this, "StartGame", "Music");
@@ -11,11 +19,16 @@ public partial class StartScreen : Control
 	
 	private void OnSettingsPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//Settings.tscn");
+		AddChild(GD.Load<PackedScene>("res://Scenes/Settings.tscn").Instantiate());
 	}
 	
 	private void OnQuitPressed()
 	{
 		GetTree().Quit();
+	}
+
+	private void PlayHover()
+	{
+		AudioManager.PlayerAudio.PlayAudio(this, "HoverButton", "SFX");
 	}
 }

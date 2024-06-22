@@ -6,6 +6,7 @@ public partial class MeleeEnemy : CharacterBody2D
 	private NavigationAgent2D _nav;
 	private float _gravity;
 	private bool _didJump;
+	private Marker2D _positionMarker;
 
 	public float Speed = 100;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -13,6 +14,7 @@ public partial class MeleeEnemy : CharacterBody2D
 	public override void _Ready()
 	{
 		_nav = GetNode<NavigationAgent2D>("NavigationAgent2D");
+		_positionMarker = GetNode<Marker2D>("Marker2D");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +27,7 @@ public partial class MeleeEnemy : CharacterBody2D
 		_nav.TargetPosition = Global.CurrentPlayer.GlobalPosition;
 		velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
 		_nav.Velocity = velocity;
+		_positionMarker.Scale = new Vector2(velocity.X.CompareTo(0), 1);
 	}
 	
 	private void VelocityComputed(Vector2 safeVelocity)
@@ -49,5 +52,13 @@ public partial class MeleeEnemy : CharacterBody2D
 			safeVelocity.Y -= 300f;
 		Velocity = safeVelocity;
 		MoveAndSlide();
+	}
+
+	private void OnHurtboxEntered(Node2D body)
+	{
+		if (body is Player)
+		{
+			((Player)body).TakeDamage(10);
+		}
 	}
 }
