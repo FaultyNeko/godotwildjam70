@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo0wcr27643ec"]
+
+[ext_resource type="Script" path="res://Scripts/MusicPlayer.cs" id="1_gxpfq"]
+[ext_resource type="Script" path="res://Scripts/AudioStreamLayered.cs" id="2_6h6fo"]
+[ext_resource type="AudioStream" uid="uid://d2f7igt8flj2k" path="res://Assets/Music/regal_1.ogg" id="2_qo80d"]
+[ext_resource type="AudioStream" uid="uid://ygtns3qpdo16" path="res://Assets/Music/regal_2.ogg" id="3_5lec1"]
+[ext_resource type="AudioStream" uid="uid://b20s21shoq21e" path="res://Assets/Music/hell_1.ogg" id="4_0qsoo"]
+[ext_resource type="AudioStream" uid="uid://ym3sj5n2cfor" path="res://Assets/Music/hell_2.ogg" id="5_0qfnr"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_gxpfq")
+
+[node name="Regal" type="Node" parent="."]
+script = ExtResource("2_6h6fo")
+
+[node name="0" type="AudioStreamPlayer" parent="Regal"]
+stream = ExtResource("2_qo80d")
+
+[node name="1" type="AudioStreamPlayer" parent="Regal"]
+stream = ExtResource("3_5lec1")
+
+[node name="Hell" type="Node" parent="."]
+
+[node name="0" type="AudioStreamPlayer" parent="Hell"]
+stream = ExtResource("4_0qsoo")
+
+[node name="1" type="AudioStreamPlayer" parent="Hell"]
+stream = ExtResource("5_0qfnr")

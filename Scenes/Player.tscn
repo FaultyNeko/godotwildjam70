@@ -257,7 +257,7 @@ script = ExtResource("1_bq5bx")
 position = Vector2(-1.52588e-05, 2.55108e-05)
 scale = Vector2(0.0242424, 0.0933333)
 sprite_frames = SubResource("SpriteFrames_sou04")
-animation = &"Attack"
+animation = &"Idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 callback_mode_process = 0
