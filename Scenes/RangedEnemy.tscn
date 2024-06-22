@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr8jprty1v0js"]
+[gd_scene load_steps=4 format=3 uid="uid://bv474b2h6og4n"]
 
 [ext_resource type="Script" path="res://Scripts/RangedEnemy.cs" id="1_jpa51"]
 [ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="2_fkar2"]
@@ -9,8 +9,10 @@ size = Vector2(128, 128)
 [node name="Ranged Enemy" type="CharacterBody2D"]
 script = ExtResource("1_jpa51")
 
-[node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("2_fkar2")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cbuuy")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="Marker2D"]
+texture = ExtResource("2_fkar2")

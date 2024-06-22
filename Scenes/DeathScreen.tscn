@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mlc5cpk72b0e"]
+[gd_scene load_steps=9 format=3 uid="uid://boo7cyvqljd27"]
 
 [ext_resource type="Script" path="res://Scripts/DeathScreen.cs" id="1_utxyp"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="2_p55dk"]
@@ -20,6 +20,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_utxyp")
 metadata/_edit_use_anchors_ = true
 
@@ -73,4 +75,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_c0vbg")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="mouse_entered" from="Retry" to="." method="PlayHover"]
 [connection signal="pressed" from="Retry" to="." method="OnRetryPressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="PlayHover"]
+[connection signal="pressed" from="Quit" to="." method="OnQuitPressed"]

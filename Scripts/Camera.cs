@@ -35,6 +35,9 @@ public partial class Camera : Camera2D
 		_player2.IsActivated = !_isPlayer1Active;
 		PositionSmoothingEnabled = !_isTweenPlaying;
 
+		if (!_isTweenPlaying && GlobalPosition != Global.CurrentPlayer.GlobalPosition)
+			GlobalPosition = Global.CurrentPlayer.GlobalPosition;
+
 		if (Input.IsActionPressed("Swap") && !_isTweenPlaying && Global.CurrentPlayer.IsOnFloor())
 		{
 			Global.CurrentPlayer.IsActivated = false;
@@ -71,6 +74,7 @@ public partial class Camera : Camera2D
 		}
 
 		_hud.UpdateStats(Global.CurrentPlayer);
+		_hud.UpdateHealth(Global.CurrentPlayer);
 		_isTweenPlaying = true;
 		Reparent(GetTree().Root.GetChild(0));
 		Tween tween = CreateTween();

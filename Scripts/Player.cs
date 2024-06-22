@@ -152,7 +152,7 @@ public partial class Player : CharacterBody2D
                 break;
             case "Vitality":
                 Vitality += value;
-                Health += 10;
+                Health += 20;
                 _hud.UpdateHealth(this);
                 break;
         }
@@ -161,10 +161,13 @@ public partial class Player : CharacterBody2D
 
     public void TakeDamage(int damage)
     {
-        AudioManager.PlayerAudio.PlayAudio(this, "PlayerHit", "SFX");
-        Health -= damage;
-        _hud.UpdateHealth(this);
-        if (Health <= 0)
-            GetTree().ChangeSceneToFile("Scenes//DeathScreen.tscn");
+        if (IsActivated)
+        {
+            AudioManager.PlayerAudio.PlayAudio(this, "PlayerHit", "SFX");
+            Health -= damage;
+            _hud.UpdateHealth(this);
+            if (Health <= 0)
+                GetTree().ChangeSceneToFile("Scenes//DeathScreen.tscn");
+        }
     }
 }

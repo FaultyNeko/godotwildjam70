@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4b627wou363s"]
+[gd_scene load_steps=4 format=3 uid="uid://c2us70mwicnjm"]
 
 [ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="1_6v8om"]
 [ext_resource type="Script" path="res://Scripts/FlyingEnemy.cs" id="1_agmyi"]
@@ -8,6 +8,7 @@ size = Vector2(128, 128)
 
 [node name="Flying Enemy" type="CharacterBody2D"]
 modulate = Color(1, 1, 0, 1)
+collision_layer = 2
 script = ExtResource("1_agmyi")
 
 [node name="Icon" type="Sprite2D" parent="."]

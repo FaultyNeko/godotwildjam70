@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_bq5bx"]
 [ext_resource type="Texture2D" uid="uid://cddprlwml0o2u" path="res://Assets/Sprites/FireBall/0001.png" id="2_2jjrs"]
-[ext_resource type="Texture2D" uid="uid://clf4vmnfvvoq2" path="res://Assets/Sprites/Egg.png" id="2_m8d77"]
-[ext_resource type="Texture2D" uid="uid://bvthyd5nbrwxx" path="res://Assets/Sprites/Arrow.png" id="3_oks05"]
+[ext_resource type="Texture2D" uid="uid://b8hmks2pf0576" path="res://Assets/Sprites/Egg.png" id="2_m8d77"]
+[ext_resource type="Texture2D" uid="uid://b5125ppu026sr" path="res://Assets/Sprites/Arrow.png" id="3_oks05"]
 [ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="4_c7tsy"]
 [ext_resource type="Texture2D" uid="uid://i38ugkqpaf3a" path="res://Assets/Sprites/GWJSplashScreen.png" id="5_2qx65"]
 [ext_resource type="Texture2D" uid="uid://byqe40ut01ipi" path="res://Assets/Sprites/TakeoverWildcard.png" id="7_6h8hq"]

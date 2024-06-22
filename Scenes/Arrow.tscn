@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfykbv8488b6e"]
 
-[ext_resource type="Texture2D" uid="uid://bvthyd5nbrwxx" path="res://Assets/Sprites/Arrow.png" id="1_4nsx2"]
+[ext_resource type="Texture2D" uid="uid://b5125ppu026sr" path="res://Assets/Sprites/Arrow.png" id="1_4nsx2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_400kk"]
-size = Vector2(64, 40)
+size = Vector2(64, 32)
 
 [node name="Arrow" type="Area2D"]
 
@@ -14,5 +14,6 @@ texture = ExtResource("1_4nsx2")
 offset = Vector2(0, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_400kk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

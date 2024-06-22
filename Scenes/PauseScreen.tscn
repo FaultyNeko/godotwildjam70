@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://hcdc78nj1jvo"]
+[gd_scene load_steps=13 format=3 uid="uid://bqd4xph2exccu"]
 
 [ext_resource type="Script" path="res://Scripts/PauseScreen.cs" id="1_3dqg1"]
 [ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="2_q2fd7"]

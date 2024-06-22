@@ -23,4 +23,18 @@ public partial class AudioManager : Node
 		} catch (Exception ignored) { }
 		temp.Play();
 	}
+	
+	public void PlayPositionalAudio(Node parent, string name, string bus)
+	{
+		AudioStreamPlayer2D temp = new AudioStreamPlayer2D();
+		temp.Name = name;
+		temp.Stream = GD.Load<AudioStream>("res://Assets/" + bus + "/" + name + ".wav");
+		temp.Bus = bus;
+		parent.AddChild(temp);
+		try
+		{
+			temp.Finished += () => QueueFree();
+		} catch (Exception ignored) { }
+		temp.Play();
+	}
 }

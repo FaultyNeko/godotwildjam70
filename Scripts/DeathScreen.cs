@@ -12,4 +12,9 @@ public partial class DeathScreen : Control
 	{
 		GetTree().ChangeSceneToFile("Scenes//StartScreen.tscn");
 	}
+	
+	private void PlayHover()
+	{
+		AudioManager.PlayerAudio.PlayAudio(this, "HoverButton", "SFX");
+	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8gn8l8wchjm0"]
+[gd_scene load_steps=14 format=3 uid="uid://cmsbrk3bko342"]
 
 [ext_resource type="Script" path="res://Scripts/MeleeEnemy.cs" id="1_jw5r6"]
 [ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="1_s4027"]
@@ -6,12 +6,94 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cg1hc"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukrss"]
+size = Vector2(64, 64)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yds4v"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lendj"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m67fi"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gt0vn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_est2u"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8bw71"]
+states/Attack/node = SubResource("AnimationNodeAnimation_yds4v")
+states/Attack/position = Vector2(341.333, 56.6667)
+states/Idle/node = SubResource("AnimationNodeAnimation_lendj")
+states/Idle/position = Vector2(334.667, 159.333)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_m67fi"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_gt0vn"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_est2u")]
+
+[sub_resource type="Animation" id="Animation_oukwu"]
+resource_name = "Attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D/Hurtbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lmd0a"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D/Hurtbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndgkp"]
+_data = {
+"Attack": SubResource("Animation_oukwu"),
+"Idle": SubResource("Animation_lmd0a")
+}
+
 [node name="Melee Enemy" type="CharacterBody2D"]
 script = ExtResource("1_jw5r6")
-
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
-texture = ExtResource("1_s4027")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cg1hc")
@@ -20,4 +102,31 @@ shape = SubResource("RectangleShape2D_cg1hc")
 avoidance_enabled = true
 debug_enabled = true
 
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="Marker2D"]
+modulate = Color(0, 1, 1, 1)
+texture = ExtResource("1_s4027")
+
+[node name="Hurtbox" type="Area2D" parent="Marker2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Hurtbox"]
+position = Vector2(88, 0)
+shape = SubResource("RectangleShape2D_ukrss")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(88, -1.90735e-06)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_s4027")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_8bw71")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ndgkp")
+}
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="VelocityComputed"]
+[connection signal="body_entered" from="Marker2D/Hurtbox" to="." method="OnHurtboxEntered"]
