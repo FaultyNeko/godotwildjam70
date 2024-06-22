@@ -1,30 +1,36 @@
-[gd_scene load_steps=12 format=3 uid="uid://hcdc78nj1jvo"]
+[gd_scene load_steps=13 format=3 uid="uid://bqd4xph2exccu"]
 
 [ext_resource type="Script" path="res://Scripts/PauseScreen.cs" id="1_3dqg1"]
+[ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="2_q2fd7"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_n6yww"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_am67u"]
+atlas = ExtResource("2_q2fd7")
 region = Rect2(50, 2, 45, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6i7or"]
+atlas = ExtResource("2_q2fd7")
 region = Rect2(48, 48, 48, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ay6fg"]
 texture = SubResource("AtlasTexture_6i7or")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0i7w"]
+atlas = ExtResource("2_q2fd7")
 region = Rect2(177, 97, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hk128"]
 texture = SubResource("AtlasTexture_l0i7w")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8pa0"]
+atlas = ExtResource("2_q2fd7")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_po27i"]
 texture = SubResource("AtlasTexture_s8pa0")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo1oc"]
+atlas = ExtResource("2_q2fd7")
 region = Rect2(177, 129, 62, 30)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e7q10"]
