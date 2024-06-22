@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2eh6sr3i8dur"
-path="res://.godot/imported/JumpSpritesheet.png-48945bf1ec2bd8ce981315cb0ff0885f.ctex"
+uid="uid://4w25dv1rgeoa"
+path="res://.godot/imported/God Idle.png-8874e0bac74bb73411d18a3990cef3c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PlayerCharacter/JumpSpritesheet.png"
-dest_files=["res://.godot/imported/JumpSpritesheet.png-48945bf1ec2bd8ce981315cb0ff0885f.ctex"]
+source_file="res://Assets/Sprites/PlayerCharacter/Spritesheets/God Idle.png"
+dest_files=["res://.godot/imported/God Idle.png-8874e0bac74bb73411d18a3990cef3c2.ctex"]
 
 [params]
 
