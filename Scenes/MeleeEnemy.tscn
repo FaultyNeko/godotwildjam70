@@ -109,7 +109,6 @@ modulate = Color(0, 1, 1, 1)
 texture = ExtResource("1_s4027")
 
 [node name="Hurtbox" type="Area2D" parent="Marker2D"]
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Hurtbox"]
 position = Vector2(112, 0)
@@ -130,8 +129,8 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="VelocityComputed"]
 [connection signal="body_entered" from="Marker2D/Hurtbox" to="." method="OnHurtboxEntered"]
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

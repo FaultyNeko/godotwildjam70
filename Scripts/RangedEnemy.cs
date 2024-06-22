@@ -9,6 +9,8 @@ public partial class RangedEnemy : CharacterBody2D
 	private Tween _shoot;
 	private Vector2 _position;
 	private Marker2D _positionMarker;
+	private int _health;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -22,9 +24,9 @@ public partial class RangedEnemy : CharacterBody2D
 		_shoot.SetLoops();
 		_shoot.Play();
 		_positionMarker = GetNode<Marker2D>("Marker2D");
+		_health = 100;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	private void Shoot()
 	{
 		// Should not shoot if player is too far
@@ -35,7 +37,7 @@ public partial class RangedEnemy : CharacterBody2D
 		AddChild(arrow);
 		arrow.Rotation = Position.AngleToPoint(_position);
 		Tween arrowTween = arrow.CreateTween();
-		arrow.BodyEntered += (body) => ArrowCollision(body, arrow);
+		arrow.BodyEntered += body => ArrowCollision(body, arrow);
 		arrowTween.TweenProperty(arrow, "position", ToLocal(_position), .5);
 		arrowTween.TweenCallback(Callable.From(() => arrow.CallDeferred(MethodName.QueueFree)));
 		arrowTween.Play();
@@ -49,6 +51,17 @@ public partial class RangedEnemy : CharacterBody2D
 		{
 			((Player)body).TakeDamage(10);
 			arrow.CallDeferred(MethodName.QueueFree);
+		}
+	}
+	
+	public void TakeDamage(int damage)
+	{
+		_health -= damage;
+		AudioManager.PlayerAudio.PlayPositionalAudio(this, "EnemyHit", "SFX");
+		if (_health <= 0)
+		{
+			AudioManager.PlayerAudio.PlayPositionalAudio(GetParent(), "EnemyHit", "SFX");
+			QueueFree();
 		}
 	}
 }

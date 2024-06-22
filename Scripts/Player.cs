@@ -19,9 +19,10 @@ public partial class Player : CharacterBody2D
     private Marker2D _positionMarker;
     private HUD _hud;
     private AudioStreamPlayer _stepPlayer;
+    private Area2D _hurtbox;
     
     public bool IsActivated = true;
-    public int Damage = 25;
+    public int Damage = 15;
 
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -33,6 +34,7 @@ public partial class Player : CharacterBody2D
         Health = 100;
         _hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
         _stepPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        _hurtbox = _positionMarker.GetNode<Area2D>("Hurtbox");
     }
     
     public override void _PhysicsProcess(double delta)
@@ -132,6 +134,14 @@ public partial class Player : CharacterBody2D
         }
         _isOnGround = IsOnFloor();
         
+        // Handle attacking
+        if (Input.IsActionJustPressed("Attack"))
+        {
+            if (!_hurtbox.Monitorable)
+                AudioManager.PlayerAudio.PlayAudio(this, "PlayerAttack", "SFX");
+            _stateMachine.Travel("Attack");
+        }
+        
         Velocity = velocity;
         
         MoveAndSlide();
@@ -148,7 +158,7 @@ public partial class Player : CharacterBody2D
                 break;
             case "Strength":
                 Strength += value;
-                Damage += 10;
+                Damage += 5;
                 break;
             case "Vitality":
                 Vitality += value;
@@ -168,6 +178,22 @@ public partial class Player : CharacterBody2D
             _hud.UpdateHealth(this);
             if (Health <= 0)
                 GetTree().ChangeSceneToFile("Scenes//DeathScreen.tscn");
+        }
+    }
+
+    private void OnHurtboxEntered(Node2D body)
+    {
+        if (body is FlyingEnemy)
+        {
+            ((FlyingEnemy)body).TakeDamage(Damage);
+        }
+        else if (body is MeleeEnemy)
+        {
+            ((MeleeEnemy)body).TakeDamage(Damage);
+        }
+        else if (body is RangedEnemy)
+        {
+            ((RangedEnemy)body).TakeDamage(Damage);
         }
     }
 }

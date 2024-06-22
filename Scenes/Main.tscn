@@ -2926,9 +2926,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dq4ps")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2dmhc"]
-vertices = PackedVector2Array(3485, -681, 26, -610, 33, -2166, 3478, -2245)
+vertices = PackedVector2Array(14621, -4294, 14590, 2197, -21, 2142, 57, -4453)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(16, -600, 24, -2176, 3488, -2256, 3496, -672)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(48, -4464, 14632, -4304, 14600, 2208, -32, 2152)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Main" type="Node2D"]
@@ -2975,20 +2975,34 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="UpgradeNode" parent="." instance=ExtResource("8_bnx7s")]
-position = Vector2(1008, -816)
-
-[node name="Flying Enemy" parent="." instance=ExtResource("8_yyg81")]
-position = Vector2(1640, -1192)
-
-[node name="Melee Enemy" parent="." instance=ExtResource("9_wlvf7")]
-position = Vector2(2904, -736)
-
-[node name="Ranged Enemy" parent="." instance=ExtResource("10_68i8q")]
-position = Vector2(2808, -1168)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_2dmhc")
 
+[node name="RegalEnemies" type="Node2D" parent="."]
+
+[node name="Flying Enemy" parent="RegalEnemies" instance=ExtResource("8_yyg81")]
+position = Vector2(2600, -1024)
+
+[node name="Melee Enemy" parent="RegalEnemies" instance=ExtResource("9_wlvf7")]
+position = Vector2(2904, -736)
+
+[node name="Ranged Enemy" parent="RegalEnemies" instance=ExtResource("10_68i8q")]
+position = Vector2(2808, -1168)
+
+[node name="UnderworldEnemies" type="Node2D" parent="."]
+
+[node name="Flying Enemy1" parent="UnderworldEnemies" instance=ExtResource("8_yyg81")]
+position = Vector2(624, 1520)
+
+[node name="RegalUpgrades" type="Node2D" parent="." groups=["RegalUpgrades"]]
+
+[node name="RegUp0" parent="RegalUpgrades" instance=ExtResource("8_bnx7s")]
+position = Vector2(1024, -768)
+
+[node name="UnderworldUpgrades" type="Node2D" parent="." groups=["UnderworldUpgrades"]]
+
+[node name="UndUp0" parent="UnderworldUpgrades" instance=ExtResource("8_bnx7s")]
+position = Vector2(632, 1728)
+
 [connection signal="timeout" from="Knight/Camera/Timer" to="Knight/Camera" method="OnTimerTimeout"]
-[connection signal="body_entered" from="UpgradeNode" to="CanvasLayer/HUD" method="UpgradeNodeEntered"]

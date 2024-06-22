@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://cci8infj626o0"]
+[gd_scene load_steps=40 format=3 uid="uid://cci8infj626o0"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_bq5bx"]
 [ext_resource type="Texture2D" uid="uid://cddprlwml0o2u" path="res://Assets/Sprites/FireBall/0001.png" id="2_2jjrs"]
+[ext_resource type="Texture2D" uid="uid://b70g57tbeykma" path="res://Assets/TileSets/RockSprites.png" id="2_cvqif"]
 [ext_resource type="Texture2D" uid="uid://b8hmks2pf0576" path="res://Assets/Sprites/Egg.png" id="2_m8d77"]
 [ext_resource type="Texture2D" uid="uid://b5125ppu026sr" path="res://Assets/Sprites/Arrow.png" id="3_oks05"]
 [ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="4_c7tsy"]
@@ -11,7 +12,10 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sou04"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cvqif")
+}],
 "loop": true,
 "name": &"Attack",
 "speed": 5.0
@@ -65,6 +69,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fihj"]
+size = Vector2(56, 128)
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k6ol0"]
 animation = &"Attack"
 
@@ -99,8 +106,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ht7u"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qwn3o"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4k51w"]
 switch_mode = 2
 advance_mode = 2
@@ -108,6 +113,12 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e4oqs"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i1es7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yqqky"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nnh5f"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s7bpj"]
 states/Attack/node = SubResource("AnimationNodeAnimation_k6ol0")
@@ -125,11 +136,13 @@ states/Run/position = Vector2(228.099, -127.525)
 states/Start/position = Vector2(92, -32.2066)
 "states/Wall Slide/node" = SubResource("AnimationNodeAnimation_3q636")
 "states/Wall Slide/position" = Vector2(547.437, -111.713)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7c5wa"), "Wall Slide", "Land", SubResource("AnimationNodeStateMachineTransition_mvij1"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_q1sqb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_adjxc"), "Jump", "Wall Slide", SubResource("AnimationNodeStateMachineTransition_68l45"), "Dash", "Attack", SubResource("AnimationNodeStateMachineTransition_3ht7u"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_qwn3o"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_4k51w"), "Land", "Dash", SubResource("AnimationNodeStateMachineTransition_e4oqs"), "Wall Slide", "Idle", SubResource("AnimationNodeStateMachineTransition_i1es7")]
-graph_offset = Vector2(-155, -160)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7c5wa"), "Wall Slide", "Land", SubResource("AnimationNodeStateMachineTransition_mvij1"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_q1sqb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_adjxc"), "Jump", "Wall Slide", SubResource("AnimationNodeStateMachineTransition_68l45"), "Dash", "Attack", SubResource("AnimationNodeStateMachineTransition_3ht7u"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_4k51w"), "Land", "Dash", SubResource("AnimationNodeStateMachineTransition_e4oqs"), "Wall Slide", "Idle", SubResource("AnimationNodeStateMachineTransition_i1es7"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_yqqky"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_nnh5f")]
+graph_offset = Vector2(-15, -73)
 
 [sub_resource type="Animation" id="Animation_wh3b8"]
 resource_name = "Attack"
+length = 0.333335
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -141,6 +154,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Hurtbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/Hurtbox/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_h7glx"]
@@ -171,6 +208,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Hurtbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/Hurtbox/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_hyh8w"]
@@ -257,7 +318,18 @@ script = ExtResource("1_bq5bx")
 position = Vector2(-1.52588e-05, 2.55108e-05)
 scale = Vector2(0.0242424, 0.0933333)
 sprite_frames = SubResource("SpriteFrames_sou04")
-animation = &"Idle"
+animation = &"Attack"
+
+[node name="Hurtbox" type="Area2D" parent="Marker2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/Hurtbox"]
+position = Vector2(36, -1.43051e-06)
+scale = Vector2(0.4375, 1)
+texture = ExtResource("4_c7tsy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Hurtbox"]
+position = Vector2(36, 0)
+shape = SubResource("RectangleShape2D_6fihj")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 callback_mode_process = 0
@@ -275,3 +347,5 @@ shape = SubResource("RectangleShape2D_vnq7s")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vvbsx")
 bus = &"SFX"
+
+[connection signal="body_entered" from="Marker2D/Hurtbox" to="." method="OnHurtboxEntered"]
