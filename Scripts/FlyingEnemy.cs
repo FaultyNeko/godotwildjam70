@@ -18,8 +18,8 @@ public partial class FlyingEnemy : CharacterBody2D
 		_layEgg = CreateTween();
 		_layEgg.TweenCallback(Callable.From(LayEgg));
 		_layEgg.TweenInterval(1);
-		_layEgg.SetLoops();
-		_layEgg.Play();
+		//_layEgg.SetLoops();
+		//_layEgg.Play();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +32,8 @@ public partial class FlyingEnemy : CharacterBody2D
 		Vector2 velocity = Vector2.Zero;
 		if (Math.Abs(GlobalPosition.X - _nav.TargetPosition.X) > 10f)
 			velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
+		if (Math.Abs(GlobalPosition.X - _nav.TargetPosition.X) > 100f)
+			_layEgg.Play();
 		_nav.Velocity = velocity;
 		_marker.Scale = new Vector2(velocity.X.CompareTo(0), 1);
 	}

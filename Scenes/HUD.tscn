@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://5i8ntt4jgwdm"]
+[gd_scene load_steps=6 format=3 uid="uid://d3q7dujcumhpp"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.cs" id="1_8hh6j"]
 [ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="2_nl5p4"]

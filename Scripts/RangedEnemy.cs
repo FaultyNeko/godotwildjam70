@@ -37,7 +37,7 @@ public partial class RangedEnemy : CharacterBody2D
 		Tween arrowTween = arrow.CreateTween();
 		arrow.BodyEntered += (body) => ArrowCollision(body, arrow);
 		arrowTween.TweenProperty(arrow, "position", ToLocal(_position), .5);
-		arrowTween.TweenCallback(Callable.From(arrow.QueueFree));
+		arrowTween.TweenCallback(Callable.From(() => arrow.CallDeferred(MethodName.QueueFree)));
 		arrowTween.Play();
 		Modulate = Colors.White;
 		_positionMarker.Scale = new Vector2((_position.X - Position.X).CompareTo(0), 1);

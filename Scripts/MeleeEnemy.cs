@@ -1,5 +1,5 @@
 using Godot;
-namespace WildGameJam70.Scripts;
+using System;
 
 public partial class MeleeEnemy : CharacterBody2D
 {
@@ -7,6 +7,8 @@ public partial class MeleeEnemy : CharacterBody2D
 	private float _gravity;
 	private bool _didJump;
 	private Marker2D _positionMarker;
+	private AnimationNodeStateMachinePlayback _stateMachine;
+	private Timer _timer;
 
 	public float Speed = 100;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -15,6 +17,8 @@ public partial class MeleeEnemy : CharacterBody2D
 	{
 		_nav = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_positionMarker = GetNode<Marker2D>("Marker2D");
+		_stateMachine = (AnimationNodeStateMachinePlayback)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
+		_timer = GetNode<Timer>("Timer");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +32,13 @@ public partial class MeleeEnemy : CharacterBody2D
 		velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
 		_nav.Velocity = velocity;
 		_positionMarker.Scale = new Vector2(velocity.X.CompareTo(0), 1);
+
+		if (Math.Abs(GlobalPosition.X - _nav.TargetPosition.X) < 175f && _timer.TimeLeft == 0)
+		{
+			AudioManager.PlayerAudio.PlayPositionalAudio(this, "EnemyAttack", "SFX");
+			_timer.Start();
+			_stateMachine.Travel("Attack");
+		}
 	}
 	
 	private void VelocityComputed(Vector2 safeVelocity)
