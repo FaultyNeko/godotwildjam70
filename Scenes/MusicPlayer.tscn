@@ -23,7 +23,7 @@ stream = ExtResource("4_uqskx")
 
 [node name="Hell" type="Node" parent="."]
 script = ExtResource("2_6h6fo")
-LayersPlaying = 1
+LayersPlaying = 3
 
 [node name="1" type="AudioStreamPlayer" parent="Hell"]
 stream = ExtResource("4_0qsoo")

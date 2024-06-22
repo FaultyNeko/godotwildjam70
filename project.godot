@@ -24,7 +24,7 @@ buses/default_bus_layout="res://Scenes/default_bus_layout.tres"
 
 AudioManager="*res://Scripts/AudioManager.cs"
 Global="*res://Scripts/Global.cs"
-MusicPlayer="*res://Scripts/MusicPlayer.cs"
+GlobalMusicPlayer="*res://Scripts/MusicPlayer.cs"
 
 [display]
 

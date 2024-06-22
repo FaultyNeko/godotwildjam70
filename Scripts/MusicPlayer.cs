@@ -23,12 +23,6 @@ public partial class MusicPlayer : Node
 
 	public override void _Ready() 
 	{
-		CurrentSong = "Regal";
-
-		if (!CurrentSong.IsEmpty) {
-			PlayTrack(CurrentSong);
-		}
-
 		CallDeferred(MethodName.CreateNodes);
 	}
 
@@ -79,13 +73,24 @@ public partial class MusicPlayer : Node
 	{
 		Node curr = GetNode($"{CurrentSong}");
 		if (IsPlaying(curr)) {
-
+			GD.Print("Stopping current track...");
+			StopTrack(curr);
 		}
 
-		Node n = GetNode($"{CurrentSong}");
+		Node n = GetNode($"{song}");
 		if (n is not null) {
 			PlayTrack(n);
 		}
+		CurrentSong = song;
+	}
+
+	public void StopTrack() 
+	{
+		Node curr = GetNode($"{CurrentSong}");
+		if (IsPlaying(curr)) {
+			StopTrack(curr);
+		}
+		CurrentSong = "";
 	}
 
 	/* ------------------------------------------------------------------------------- */
@@ -101,8 +106,7 @@ public partial class MusicPlayer : Node
 		}
 	}
 
-	private void StopTrack(Node n) 
-	{
+	private void StopTrack(Node n) {
 		if (n is AudioStreamPlayer) {
 			((AudioStreamPlayer)n).Stop();
 		}

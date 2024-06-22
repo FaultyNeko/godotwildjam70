@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://15koqdx8hyu4"]
+[gd_scene load_steps=15 format=3 uid="uid://15koqdx8hyu4"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_2m6bo"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="3_4qglw"]
+[ext_resource type="AudioStream" uid="uid://bl8f4d7qslsck" path="res://Assets/Music/StartScreenMusic.mp3" id="4_2cb4p"]
 [ext_resource type="Texture2D" uid="uid://b6gh1eqqy4i12" path="res://Assets/TileSets/UISprites.png" id="4_uq8h6"]
 [ext_resource type="Texture2D" uid="uid://byqe40ut01ipi" path="res://Assets/Sprites/TakeoverWildcard.png" id="5_0juga"]
 
@@ -151,6 +152,9 @@ anchor_bottom = 0.925926
 texture = ExtResource("5_0juga")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2cb4p")
 
 [connection signal="mouse_entered" from="Start" to="." method="PlayHover"]
 [connection signal="pressed" from="Start" to="." method="OnStartPressed"]
