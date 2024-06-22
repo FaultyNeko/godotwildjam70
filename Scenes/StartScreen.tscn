@@ -127,12 +127,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ontxe")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
-[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_2cb4p")
-volume_db = -10.024
-autoplay = true
-bus = &"Music"
-
 [node name="Credits" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -158,6 +152,9 @@ anchor_bottom = 0.925926
 texture = ExtResource("5_0juga")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2cb4p")
 
 [connection signal="mouse_entered" from="Start" to="." method="PlayHover"]
 [connection signal="pressed" from="Start" to="." method="OnStartPressed"]

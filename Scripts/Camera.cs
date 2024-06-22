@@ -66,11 +66,21 @@ public partial class Camera : Camera2D
 		{
 			AudioManager.PlayerAudio.PlayAudio(this, "SwapToHell", "SFX");
 			Global.CurrentPlayer = _player2;
+
+			GD.Print(HasNode("/root/GlobalMusicPlayer"));
+			var mp = GetNode<MusicPlayer>("/root/GlobalMusicPlayer");
+			mp.PlayTrack("Hell");
+			(mp.CurrentSong as AudioStreamLayered).LayersPlaying = 0b1;
 		}
 		else
 		{
 			AudioManager.PlayerAudio.PlayAudio(this, "SwapToRegal", "SFX");
 			Global.CurrentPlayer = _player1;
+
+			GD.Print(HasNode("/root/GlobalMusicPlayer"));
+			var mp = GetNode<MusicPlayer>("/root/GlobalMusicPlayer");
+			mp.PlayTrack("Regal");
+			(mp.CurrentSong as AudioStreamLayered).LayersPlaying = 0b1;
 		}
 
 		_hud.UpdateStats(Global.CurrentPlayer);
