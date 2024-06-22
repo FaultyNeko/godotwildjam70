@@ -3,10 +3,14 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class MusicPlayer : Node
 {
-	public NodePath CurrentSong { get; private set; }
+	public NodePath CurrentSongPath { get; private set; }
+	public Node CurrentSong {
+		get => GetNode(CurrentSongPath);
+	}
 	private const string PATH_TO_TRACKLIST = "res://Assets/Tracklist.json";
 	
 	// Structs for json deserialization
@@ -71,7 +75,7 @@ public partial class MusicPlayer : Node
 	/// <param name="song">Name of the song. So far, the only tracks are "Regal" and "Hell"</param>
 	public void PlayTrack(NodePath song)
 	{
-		Node curr = GetNode($"{CurrentSong}");
+		Node curr = GetNode($"{CurrentSongPath}");
 		if (IsPlaying(curr)) {
 			GD.Print("Stopping current track...");
 			StopTrack(curr);
@@ -81,16 +85,16 @@ public partial class MusicPlayer : Node
 		if (n is not null) {
 			PlayTrack(n);
 		}
-		CurrentSong = song;
+		CurrentSongPath = song;
 	}
 
 	public void StopTrack() 
 	{
-		Node curr = GetNode($"{CurrentSong}");
+		Node curr = GetNode($"{CurrentSongPath}");
 		if (IsPlaying(curr)) {
 			StopTrack(curr);
 		}
-		CurrentSong = "";
+		CurrentSongPath = "";
 	}
 
 	/* ------------------------------------------------------------------------------- */

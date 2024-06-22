@@ -23,6 +23,7 @@ public partial class StartScreen : Control
 		GD.Print(HasNode("/root/GlobalMusicPlayer"));
 		var mp = GetNode<MusicPlayer>("/root/GlobalMusicPlayer");
 		mp.PlayTrack("Regal");
+		(mp.CurrentSong as AudioStreamLayered).LayersPlaying = 0b1;
 
 		//AudioManager.PlayerAudio.PlayAudio(this, "StartGame", "Music");
 		GetTree().ChangeSceneToFile("Scenes//Main.tscn");

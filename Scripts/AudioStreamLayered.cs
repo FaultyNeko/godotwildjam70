@@ -42,7 +42,7 @@ public partial class AudioStreamLayered : Node
     public override void _Process(double delta)
     {
 		if (_layersPlayingPrev != LayersPlaying) {
-			
+			MuteLayers();
 		}
     }
 
