@@ -36,9 +36,9 @@ public partial class MusicPlayer : Node
 		using var file = FileAccess.Open(PATH_TO_TRACKLIST, FileAccess.ModeFlags.Read);
 		string json = file.GetAsText();
 
-		GD.Print(json);
+		//GD.Print(json);
 		var tl = JsonConvert.DeserializeObject<Tracklist>(json);
-		GD.Print(tl.tracks.Count);
+		//GD.Print(tl.tracks.Count);
 
 		// Create the nodes for each AudioStreamPlayer
 		foreach (Track t in tl.tracks) {
@@ -77,7 +77,7 @@ public partial class MusicPlayer : Node
 	{
 		Node curr = GetNode($"{CurrentSongPath}");
 		if (IsPlaying(curr)) {
-			GD.Print("Stopping current track...");
+			//GD.Print("Stopping current track...");
 			StopTrack(curr);
 		}
 
@@ -111,8 +111,9 @@ public partial class MusicPlayer : Node
 	}
 
 	private void StopTrack(Node n) {
-		if (n is AudioStreamPlayer) {
-			((AudioStreamPlayer)n).Stop();
+		if (n is AudioStreamPlayer)
+		{
+			((AudioStreamPlayer)n).StreamPaused = true;
 		}
 		if (n is AudioStreamLayered) {
 			((AudioStreamLayered)n).Stop();

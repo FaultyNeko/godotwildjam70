@@ -2934,7 +2934,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Main" type="Node2D"]
 
 [node name="Knight" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
-position = Vector2(160, -632)
+position = Vector2(175, -632)
 
 [node name="Camera" type="Camera2D" parent="Knight"]
 position_smoothing_enabled = true
@@ -2949,7 +2949,7 @@ bus = &"SFX"
 
 [node name="Demon" parent="." groups=["Player"] instance=ExtResource("2_gxgar")]
 modulate = Color(0.996078, 0.0196078, 0, 1)
-position = Vector2(160, 1936)
+position = Vector2(160, 1928)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(4, 4)
