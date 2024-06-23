@@ -5,11 +5,12 @@ using Vector2 = Godot.Vector2;
 
 public partial class RangedEnemy : CharacterBody2D
 {
+	public int Health { get => _health; }
 	private PackedScene _arrow;
 	private Tween _shoot;
 	private Vector2 _position;
 	private Marker2D _positionMarker;
-	private int _health;
+	[Export] private int _health = 10;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,7 +25,6 @@ public partial class RangedEnemy : CharacterBody2D
 		_shoot.SetLoops();
 		_shoot.Play();
 		_positionMarker = GetNode<Marker2D>("Marker2D");
-		_health = 100;
 	}
 
 	private void Shoot()
