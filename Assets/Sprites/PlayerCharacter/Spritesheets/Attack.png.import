@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://id7esd723bjl"
-path="res://.godot/imported/0011.png-ad678d6ec8d855b7ec0484f038a5abbc.ctex"
+uid="uid://byhplqytdy63m"
+path="res://.godot/imported/Attack.png-1e2c07772cce2a5acc563441f3f12e28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/FireBall/0011.png"
-dest_files=["res://.godot/imported/0011.png-ad678d6ec8d855b7ec0484f038a5abbc.ctex"]
+source_file="res://Assets/Sprites/PlayerCharacter/Spritesheets/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-1e2c07772cce2a5acc563441f3f12e28.ctex"]
 
 [params]
 
