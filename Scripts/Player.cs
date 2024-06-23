@@ -138,12 +138,12 @@ public partial class Player : CharacterBody2D
         _isOnGround = IsOnFloor();
         
         // Handle attacking
-        if (Input.IsActionJustPressed("Attack") && _animPlayer.CurrentAnimation != "Attack")
+        if (Input.IsActionJustPressed("Attack") && !_hurtbox.Monitoring)
         {
             AudioManager.PlayerAudio.PlayAudio(this, "PlayerAttack", "SFX");
             _stateMachine.Travel("Attack");
         }
-        GD.Print(_animPlayer.CurrentAnimation);
+        //GD.Print(_animPlayer.CurrentAnimation);
         
         Velocity = velocity;
         

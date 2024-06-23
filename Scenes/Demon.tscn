@@ -954,7 +954,7 @@ position = Vector2(0, -24)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_6rsr3")
 animation = &"Idle"
-frame = 22
+frame = 9
 offset = Vector2(-100, 62)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -973,3 +973,5 @@ shape = SubResource("RectangleShape2D_4plpn")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("124_uqqn5")
 bus = &"SFX"
+
+[connection signal="body_entered" from="Marker2D/Hurtbox" to="." method="OnHurtboxEntered"]
