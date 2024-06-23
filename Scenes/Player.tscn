@@ -266,7 +266,7 @@ states/Start/position = Vector2(92, -32.2066)
 "states/Wall Slide/node" = SubResource("AnimationNodeAnimation_3q636")
 "states/Wall Slide/position" = Vector2(547.437, -111.713)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7c5wa"), "Wall Slide", "Land", SubResource("AnimationNodeStateMachineTransition_mvij1"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_q1sqb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_adjxc"), "Jump", "Wall Slide", SubResource("AnimationNodeStateMachineTransition_68l45"), "Dash", "Attack", SubResource("AnimationNodeStateMachineTransition_3ht7u"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_4k51w"), "Land", "Dash", SubResource("AnimationNodeStateMachineTransition_e4oqs"), "Wall Slide", "Idle", SubResource("AnimationNodeStateMachineTransition_i1es7"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_yqqky"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_nnh5f")]
-graph_offset = Vector2(-15, -73)
+graph_offset = Vector2(-68, -164)
 
 [sub_resource type="Animation" id="Animation_wh3b8"]
 resource_name = "Attack"
@@ -437,7 +437,7 @@ script = ExtResource("1_bq5bx")
 position = Vector2(-16, 0)
 scale = Vector2(2.61224, 2.61224)
 sprite_frames = SubResource("SpriteFrames_sou04")
-animation = &"Idle"
+animation = &"Run"
 
 [node name="Hurtbox" type="Area2D" parent="Marker2D"]
 collision_layer = 0
