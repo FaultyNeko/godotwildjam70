@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgdym5s68a7v1"
-path="res://.godot/imported/LandSpritesheet.png-f6ade09f8fcc253db529c3207816a3b5.ctex"
+uid="uid://bydo82h5a2gxl"
+path="res://.godot/imported/Fireball.png-10038c76b2dcf82da692421e978c36d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PlayerCharacter/LandSpritesheet.png"
-dest_files=["res://.godot/imported/LandSpritesheet.png-f6ade09f8fcc253db529c3207816a3b5.ctex"]
+source_file="res://Assets/Sprites/PlayerCharacter/Spritesheets/Fireball.png"
+dest_files=["res://.godot/imported/Fireball.png-10038c76b2dcf82da692421e978c36d0.ctex"]
 
 [params]
 

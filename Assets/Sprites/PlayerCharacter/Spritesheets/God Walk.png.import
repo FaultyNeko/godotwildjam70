@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1nrxuqer324p"
-path="res://.godot/imported/IdleSpritesheet.png-a6a9d81826400a17d2f11696966ba0be.ctex"
+uid="uid://b8cn61e3q201a"
+path="res://.godot/imported/God Walk.png-7bec04a5f219a135936b8de4f7d0135d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PlayerCharacter/IdleSpritesheet.png"
-dest_files=["res://.godot/imported/IdleSpritesheet.png-a6a9d81826400a17d2f11696966ba0be.ctex"]
+source_file="res://Assets/Sprites/PlayerCharacter/Spritesheets/God Walk.png"
+dest_files=["res://.godot/imported/God Walk.png-7bec04a5f219a135936b8de4f7d0135d.ctex"]
 
 [params]
 

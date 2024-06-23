@@ -15,5 +15,3 @@ offset = Vector2(0, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_400kk")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
