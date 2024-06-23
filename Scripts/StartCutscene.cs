@@ -29,6 +29,6 @@ public partial class StartCutscene : Control
 	public override void _PhysicsProcess(double delta)
 	{
 		if (Input.IsActionJustPressed("ui_accept"))
-			GetTree().ChangeSceneToFile("Scenes//Main.tscn");
+			GetTree().ChangeSceneToFile("Scenes//Level.tscn");
 	}
 }

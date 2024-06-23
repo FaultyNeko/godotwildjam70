@@ -10,7 +10,7 @@ public partial class RangedEnemy : CharacterBody2D
 	private Tween _shoot;
 	private Vector2 _position;
 	private Marker2D _positionMarker;
-	[Export] private int _health = 10;
+	[Export] private int _health = 45;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -30,7 +30,7 @@ public partial class RangedEnemy : CharacterBody2D
 	private void Shoot()
 	{
 		// Should not shoot if player is too far
-		if (_position.DistanceTo(Position) > 1000)
+		if (_position.DistanceTo(Position) > 750)
 			return;
 		Area2D arrow = _arrow.Instantiate<Area2D>();
 		AudioManager.PlayerAudio.PlayPositionalAudio(this, "Dash", "SFX");

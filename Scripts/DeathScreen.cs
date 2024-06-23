@@ -5,7 +5,7 @@ public partial class DeathScreen : Control
 {
 	private void OnRetryPressed()
 	{
-		GetTree().ChangeSceneToFile("Scenes//Main.tscn");
+		GetTree().ChangeSceneToFile("Scenes//Level.tscn");
 	}
 
 	private void OnQuitPressed()

@@ -10,7 +10,7 @@ public partial class MeleeEnemy : CharacterBody2D
 	private Marker2D _positionMarker;
 	private AnimationNodeStateMachinePlayback _stateMachine;
 	private Timer _timer;
-	[Export] private int _health = 10;
+	[Export] private int _health = 45;
 
 	public float Speed = 100;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();

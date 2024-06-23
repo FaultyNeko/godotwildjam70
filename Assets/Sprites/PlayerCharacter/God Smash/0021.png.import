@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6sca28yrg1ft"
-path="res://.godot/imported/01.png-a9495558049fe85bca6bc40a14ecae8d.ctex"
+uid="uid://d28cjue7erl2m"
+path="res://.godot/imported/0021.png-608d3d0f85f151ba1093ce10a3700ab9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Key Items 16x16/01.png"
-dest_files=["res://.godot/imported/01.png-a9495558049fe85bca6bc40a14ecae8d.ctex"]
+source_file="res://Assets/Sprites/PlayerCharacter/God Smash/0021.png"
+dest_files=["res://.godot/imported/0021.png-608d3d0f85f151ba1093ce10a3700ab9.ctex"]
 
 [params]
 

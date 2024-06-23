@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drbollloj27h7"]
+[gd_scene load_steps=9 format=3 uid="uid://cxagqy75qody4"]
 
 [ext_resource type="Texture2D" uid="uid://csmddd27m6buq" path="res://Assets/TileSets/Door TileSet.png" id="1_7hgvk"]
 [ext_resource type="Script" path="res://Scripts/Door.gd" id="1_dp81e"]
@@ -659,8 +659,10 @@ libraries = {
 }
 
 [node name="Achor" type="Node2D" parent="."]
+scale = Vector2(2, 2)
 
 [node name="TileMap" type="TileMap" parent="Achor"]
+z_index = -2
 position = Vector2(0, -8)
 tile_set = SubResource("TileSet_hqm0r")
 format = 2
