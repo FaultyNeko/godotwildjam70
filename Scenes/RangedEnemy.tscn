@@ -7,6 +7,8 @@
 size = Vector2(128, 128)
 
 [node name="Ranged Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_jpa51")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -93,6 +93,8 @@ _data = {
 }
 
 [node name="Melee Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_jw5r6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -109,6 +111,8 @@ modulate = Color(0, 1, 1, 1)
 texture = ExtResource("1_s4027")
 
 [node name="Hurtbox" type="Area2D" parent="Marker2D"]
+collision_layer = 0
+collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Hurtbox"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=54 format=3 uid="uid://cci8infj626o0"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_bq5bx"]
-[ext_resource type="Texture2D" uid="uid://3a1sagqf111d" path="res://Assets/Sprites/PlayerCharacter/Spritesheets/Attack.webp" id="2_we6ku"]
+[ext_resource type="Texture2D" uid="uid://d2k2m7migujp7" path="res://Assets/Sprites/PlayerCharacter/Spritesheets/Attack.webp" id="2_we6ku"]
 [ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="4_c7tsy"]
 [ext_resource type="AudioStream" uid="uid://b4gc4i5d75x8x" path="res://Assets/SFX/Step.wav" id="8_vvbsx"]
 
@@ -427,6 +427,8 @@ _data = {
 size = Vector2(32, 112)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_bq5bx")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -435,9 +437,12 @@ script = ExtResource("1_bq5bx")
 position = Vector2(-16, 0)
 scale = Vector2(2.61224, 2.61224)
 sprite_frames = SubResource("SpriteFrames_sou04")
-animation = &"Wall Slide"
+animation = &"Idle"
 
 [node name="Hurtbox" type="Area2D" parent="Marker2D"]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Marker2D/Hurtbox"]
 polygon = PackedVector2Array(24, -64, -32, -40, -64, 0, -56, 32, -40, 40, 24, 64)
