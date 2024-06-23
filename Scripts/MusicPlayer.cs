@@ -110,7 +110,7 @@ public partial class MusicPlayer : Node
 	private void StopTrack(Node n) {
 		if (n is AudioStreamPlayer)
 		{
-			((AudioStreamPlayer)n).StreamPaused = true;
+			((AudioStreamPlayer)n).Stop();
 		}
 		if (n is AudioStreamLayered) {
 			((AudioStreamLayered)n).Stop();
