@@ -7,6 +7,7 @@ public partial class HUD : Control
 	private VBoxContainer _statList;
 	private TextureProgressBar _healthBar;
 	private Label _healthBarText;
+	private UpgradeNode _currentUpgradeNode;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -42,15 +43,41 @@ public partial class HUD : Control
 	{
 		if (player.Health > _healthBar.MaxValue)
 			_healthBar.MaxValue = player.Health;
+		else
+			_healthBar.MaxValue = 100;
 		_healthBar.Value = player.Health;
 		_healthBarText.Text = player.Health + "/" + _healthBar.MaxValue;
 	}
 
-	private void UpgradeNodeEntered(Node body)
+	public void UpgradeNodeEntered(UpgradeNode node, Node body)
 	{
 		if (body is Player)
 		{
 			AddChild(GD.Load<PackedScene>("res://Scenes/UpgradeScreen.tscn").Instantiate());
+			_currentUpgradeNode = node;
 		}
+	}
+
+	public void EraseNodes()
+	{
+		var regalUpgrades = GetParent().GetParent().GetNode<Node2D>("RegalUpgrades").GetChildren();
+		var underworldUpgrades = GetParent().GetParent().GetNode<Node2D>("UnderworldUpgrades").GetChildren();
+		UpgradeNode counterpart = null;
+
+		if (regalUpgrades.Contains(_currentUpgradeNode))
+		{
+			for (int i = 0; i < regalUpgrades.Count; i++)
+				if (((UpgradeNode)underworldUpgrades[i]).Index == _currentUpgradeNode.Index)
+					counterpart = (UpgradeNode)underworldUpgrades[i];
+		}
+		else
+		{
+			for (int i = 0; i < underworldUpgrades.Count; i++)
+				if (((UpgradeNode)regalUpgrades[i]).Index == _currentUpgradeNode.Index)
+					counterpart = (UpgradeNode)regalUpgrades[i];
+		}
+
+		_currentUpgradeNode.Break();
+		counterpart.Break();
 	}
 }

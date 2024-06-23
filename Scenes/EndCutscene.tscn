@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://db2cpul14nekm"]
+
+[ext_resource type="Script" path="res://Scripts/EndCutscene.cs" id="1_ngvii"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="2_fjqim"]
+
+[sub_resource type="Gradient" id="Gradient_g7ff0"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ijdu4"]
+gradient = SubResource("Gradient_g7ff0")
+
+[node name="EndCutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_ngvii")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("GradientTexture1D_ijdu4")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277778
+anchor_top = 0.17284
+anchor_right = 0.723958
+anchor_bottom = 0.833333
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+text = "With  hands  outstretched,  they  strain  to  touch,"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+text = "a  spark  ignites,  a  force  so  much"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+text = "In  that  brief  instant,  the  two  realms  blend,"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+text = "a  single  soul  begins  to  mend"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+text = "One  heart,  one  mind,  now  whole  again,"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+text = "the  soul's  great  journey  has  reached  its  end"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer" groups=["EndCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fjqim")
+theme_override_font_sizes/font_size = 40
+text = "Press space to continue"
+horizontal_alignment = 1
+vertical_alignment = 1

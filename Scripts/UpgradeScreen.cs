@@ -1,36 +1,29 @@
 using Godot;
 using System;
+using Godot.Collections;
 
 public partial class UpgradeScreen : Control
 {
-	private Player _knight, _demon;
+	private HUD _hud;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var players = GetTree().GetNodesInGroup("Player");
-		_knight = (Player)players[0];
-		_demon = (Player)players[1];
-		
 		GetTree().Paused = true;
-		
+		_hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
 		foreach (Button button in GetTree().GetNodesInGroup("UpgradeButtons"))
 		{
 			button.Pressed += () => OnButtonPressed(button);
 		}
 		
-		AudioManager.PlayerAudio.PlayAudio(this, "Upgrade", "SFX");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		AudioManager.PlayerAudio.PlayAudio(GetParent(), "Upgrade", "SFX");
 	}
 
 	private void OnButtonPressed(Button button)
 	{
 		Global.CurrentPlayer.ChangeStat(button.Name, 1);
 		GetTree().Paused = false;
+		_hud.EraseNodes();
 		QueueFree();
 	}
 

@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwh1vso3gl0g7"]
+
+[ext_resource type="Script" path="res://Scripts/StartCutscene.cs" id="1_owfa8"]
+[ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="2_ikw3w"]
+
+[sub_resource type="Gradient" id="Gradient_trdv5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3dl7k"]
+gradient = SubResource("Gradient_trdv5")
+
+[node name="StartCutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owfa8")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("GradientTexture1D_3dl7k")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.305556
+anchor_top = 0.17284
+anchor_right = 0.692708
+anchor_bottom = 0.833333
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+text = "Two  halves  of  one,  in  realms  apart,"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+text = "a  fractured  soul,  a  broken  heart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+text = "A  world  apart,  yet  bound  as  one,"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+text = "the  soul's  great  journey  has  just  begun"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+text = "To  bridge  the  gap,  to  find  the  seam,"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+text = "and  mend  again  its  broken  dream."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer" groups=["StartCutsceneLabels"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikw3w")
+theme_override_font_sizes/font_size = 40
+text = "Press space to continue"
+horizontal_alignment = 1
+vertical_alignment = 1

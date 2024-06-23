@@ -1,5 +1,5 @@
 using Godot;
-namespace WildGameJam70.Scripts;
+using System;
 
 public partial class MeleeEnemy : CharacterBody2D
 {
@@ -7,6 +7,9 @@ public partial class MeleeEnemy : CharacterBody2D
 	private float _gravity;
 	private bool _didJump;
 	private Marker2D _positionMarker;
+	private AnimationNodeStateMachinePlayback _stateMachine;
+	private Timer _timer;
+	private int _health;
 
 	public float Speed = 100;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -15,6 +18,9 @@ public partial class MeleeEnemy : CharacterBody2D
 	{
 		_nav = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_positionMarker = GetNode<Marker2D>("Marker2D");
+		_stateMachine = (AnimationNodeStateMachinePlayback)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
+		_timer = GetNode<Timer>("Timer");
+		_health = 100;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,12 +28,35 @@ public partial class MeleeEnemy : CharacterBody2D
 	{
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 		
+		if (Global.CurrentPlayer.GlobalPosition.DistanceTo(Position) > 1000)
+			return;
+		
 		// We don't want Melee enemies to attempt to resist gravity
-		Vector2 velocity = Velocity;
 		_nav.TargetPosition = Global.CurrentPlayer.GlobalPosition;
-		velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
-		_nav.Velocity = velocity;
-		_positionMarker.Scale = new Vector2(velocity.X.CompareTo(0), 1);
+		if (Math.Abs(GlobalPosition.X - _nav.TargetPosition.X) < 750f)
+		{
+			Vector2 velocity = Velocity;
+			velocity = new Vector2(ToLocal(_nav.GetNextPathPosition()).X.CompareTo(0) * Speed, 0);
+			_nav.Velocity = velocity;
+			_positionMarker.Scale = new Vector2(velocity.X.CompareTo(0), 1);
+		}
+
+		if (Math.Abs(GlobalPosition.X - _nav.TargetPosition.X) < 175f && _timer.TimeLeft == 0)
+		{
+			Modulate = Colors.Red;
+			_timer.Start();
+		}
+	}
+
+	private void OnTimerTimeout()
+	{
+		if (Modulate == Colors.Red)
+		{
+			AudioManager.PlayerAudio.PlayPositionalAudio(this, "EnemyAttack", "SFX");
+			_stateMachine.Travel("Attack");
+			Modulate = Colors.White;
+			_timer.Start();
+		}
 	}
 	
 	private void VelocityComputed(Vector2 safeVelocity)
@@ -59,6 +88,17 @@ public partial class MeleeEnemy : CharacterBody2D
 		if (body is Player)
 		{
 			((Player)body).TakeDamage(10);
+		}
+	}
+	
+	public void TakeDamage(int damage)
+	{
+		_health -= damage;
+		AudioManager.PlayerAudio.PlayPositionalAudio(this, "EnemyHit", "SFX");
+		if (_health <= 0)
+		{
+			AudioManager.PlayerAudio.PlayPositionalAudio(GetParent(), "EnemyHit", "SFX");
+			QueueFree();
 		}
 	}
 }

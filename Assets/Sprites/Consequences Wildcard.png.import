@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bydo82h5a2gxl"
-path="res://.godot/imported/Fireball.png-10038c76b2dcf82da692421e978c36d0.ctex"
+uid="uid://b7yl6p6kpta6g"
+path="res://.godot/imported/Consequences Wildcard.png-6701631a06e8c9d7c82de4f759070448.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PlayerCharacter/Spritesheets/Fireball.png"
-dest_files=["res://.godot/imported/Fireball.png-10038c76b2dcf82da692421e978c36d0.ctex"]
+source_file="res://Assets/Sprites/Consequences Wildcard.png"
+dest_files=["res://.godot/imported/Consequences Wildcard.png-6701631a06e8c9d7c82de4f759070448.ctex"]
 
 [params]
 
