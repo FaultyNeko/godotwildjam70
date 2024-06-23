@@ -941,7 +941,7 @@ position = Vector2(0, -24)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_6rsr3")
 animation = &"Idle"
-frame = 15
+frame = 2
 offset = Vector2(-100, 62)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
