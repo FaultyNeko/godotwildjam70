@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_bq5bx"]
 [ext_resource type="Texture2D" uid="uid://cddprlwml0o2u" path="res://Assets/Sprites/FireBall/0001.png" id="2_2jjrs"]
-[ext_resource type="Texture2D" uid="uid://b70g57tbeykma" path="res://Assets/TileSets/RockSprites.png" id="2_cvqif"]
+[ext_resource type="Texture2D" uid="uid://dal125yqhmohq" path="res://Assets/Sprites/PlayerCharacter/Spritesheets/AttackTest.png" id="2_blj4v"]
 [ext_resource type="Texture2D" uid="uid://b8hmks2pf0576" path="res://Assets/Sprites/Egg.png" id="2_m8d77"]
 [ext_resource type="Texture2D" uid="uid://b5125ppu026sr" path="res://Assets/Sprites/Arrow.png" id="3_oks05"]
 [ext_resource type="Texture2D" uid="uid://eals4vposdky" path="res://Assets/Sprites/icon.svg" id="4_c7tsy"]
@@ -14,7 +14,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cvqif")
+"texture": ExtResource("2_blj4v")
 }],
 "loop": true,
 "name": &"Attack",
@@ -327,7 +327,7 @@ position = Vector2(36, -1.43051e-06)
 scale = Vector2(0.4375, 1)
 texture = ExtResource("4_c7tsy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Hurtbox"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="Marker2D/Hurtbox"]
 position = Vector2(36, 0)
 shape = SubResource("RectangleShape2D_6fihj")
 
