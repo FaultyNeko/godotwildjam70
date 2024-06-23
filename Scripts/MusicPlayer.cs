@@ -1,9 +1,6 @@
 using Godot;
-using Godot.Collections;
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Reflection.Metadata.Ecma335;
 
 public partial class MusicPlayer : Node
 {
@@ -113,7 +110,7 @@ public partial class MusicPlayer : Node
 	private void StopTrack(Node n) {
 		if (n is AudioStreamPlayer)
 		{
-			((AudioStreamPlayer)n).StreamPaused = true;
+			((AudioStreamPlayer)n).Stop();
 		}
 		if (n is AudioStreamLayered) {
 			((AudioStreamLayered)n).Stop();

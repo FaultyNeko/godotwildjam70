@@ -871,7 +871,8 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_4qglw")
 theme_override_font_sizes/font_size = 25
 text = "SFX from Leohpaz
-Tileset and UI sprites from BDragon1727"
+Tileset and UI sprites from BDragon1727
+Key Items by DantePixels"
 metadata/_edit_use_anchors_ = true
 
 [node name="Wildcard" type="TextureRect" parent="."]
