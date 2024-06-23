@@ -3,13 +3,14 @@ using System;
 
 public partial class MeleeEnemy : CharacterBody2D
 {
+	public int Health { get => _health; }
 	private NavigationAgent2D _nav;
 	private float _gravity;
 	private bool _didJump;
 	private Marker2D _positionMarker;
 	private AnimationNodeStateMachinePlayback _stateMachine;
 	private Timer _timer;
-	private int _health;
+	[Export] private int _health = 10;
 
 	public float Speed = 100;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -20,7 +21,6 @@ public partial class MeleeEnemy : CharacterBody2D
 		_positionMarker = GetNode<Marker2D>("Marker2D");
 		_stateMachine = (AnimationNodeStateMachinePlayback)GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
 		_timer = GetNode<Timer>("Timer");
-		_health = 100;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

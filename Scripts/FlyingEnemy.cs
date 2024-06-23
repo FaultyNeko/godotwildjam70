@@ -3,11 +3,12 @@ using System;
 
 public partial class FlyingEnemy : CharacterBody2D
 {
+	public int Health { get => _health; }
 	private NavigationAgent2D _nav;
 	private Marker2D _marker;
 	private PackedScene _egg;
 	private Tween _layEgg;
-	private int _health;
+	[Export] private int _health = 10;
 
 	public float Speed = 100;
 	
@@ -21,7 +22,6 @@ public partial class FlyingEnemy : CharacterBody2D
 		_layEgg.TweenCallback(Callable.From(LayEgg));
 		_layEgg.TweenInterval(1);
 		_layEgg.SetLoops();
-		_health = 100;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
