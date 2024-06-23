@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=3 uid="uid://cpobp6ehsw8qb"]
+[gd_scene load_steps=22 format=3 uid="uid://cpobp6ehsw8qb"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="1_qjstr"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_f0qve"]
 [ext_resource type="AudioStream" uid="uid://cvcbmm7ow0ete" path="res://Assets/SFX/startgame.wav" id="3_vd7ms"]
 [ext_resource type="TileSet" uid="uid://bhe6g8j1kgsj7" path="res://Assets/TileSets/Terrain TileSet.tres" id="4_0gbyj"]
@@ -10,8 +9,10 @@
 [ext_resource type="FontFile" uid="uid://b5770shacgby8" path="res://Assets/Fonts/Angel wish.ttf" id="7_5c1p3"]
 [ext_resource type="PackedScene" path="res://Scenes/Door.tscn" id="8_mqhnu"]
 [ext_resource type="PackedScene" path="res://Scenes/Key.tscn" id="9_x0isd"]
+[ext_resource type="PackedScene" uid="uid://dl5nge4078keb" path="res://Scenes/Knight.tscn" id="10_ce2yg"]
 [ext_resource type="PackedScene" uid="uid://c2us70mwicnjm" path="res://Scenes/FlyingEnemy.tscn" id="11_sh7gv"]
 [ext_resource type="PackedScene" uid="uid://cmsbrk3bko342" path="res://Scenes/MeleeEnemy.tscn" id="12_11tn0"]
+[ext_resource type="PackedScene" path="res://Scenes/Demon.tscn" id="13_7chfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47q51"]
 texture = ExtResource("5_hlauo")
@@ -1523,8 +1524,9 @@ width = 2048
 
 [node name="Level" type="Node2D"]
 
-[node name="Knight" parent="." groups=["Player"] instance=ExtResource("1_qjstr")]
-position = Vector2(120, -443)
+[node name="Knight" parent="." groups=["Player"] instance=ExtResource("10_ce2yg")]
+top_level = true
+position = Vector2(160, -656)
 
 [node name="Camera" type="Camera2D" parent="Knight"]
 position_smoothing_enabled = true
@@ -1537,8 +1539,8 @@ one_shot = true
 stream = ExtResource("3_vd7ms")
 bus = &"SFX"
 
-[node name="Demon" parent="." groups=["Player"] instance=ExtResource("1_qjstr")]
-modulate = Color(0.996078, 0.0196078, 0, 1)
+[node name="Demon" parent="." groups=["Player"] instance=ExtResource("13_7chfk")]
+top_level = true
 position = Vector2(160, 3250)
 
 [node name="RegalTileMap" type="TileMap" parent="."]
@@ -1626,9 +1628,10 @@ rotation = 1.5708
 scale = Vector2(4, 4)
 animation = "Slide In"
 
-[node name="Key" parent="." instance=ExtResource("9_x0isd")]
-position = Vector2(3977, 4743)
-scale = Vector2(4, 4)
+[node name="Key" parent="Door" instance=ExtResource("9_x0isd")]
+position = Vector2(1456.75, 22.7448)
+rotation = -1.5708
+scale = Vector2(1, 1)
 
 [node name="Door2" parent="." instance=ExtResource("8_mqhnu")]
 position = Vector2(4152, 4608)
@@ -1636,12 +1639,13 @@ rotation = 1.57079
 scale = Vector2(4, 4)
 animation = "Slide In"
 
+[node name="Key2" parent="Door2" instance=ExtResource("9_x0isd")]
+position = Vector2(-1577.25, -111.26)
+rotation = -1.57079
+scale = Vector2(1, 1)
+
 [node name="Flying Enemy" parent="." instance=ExtResource("11_sh7gv")]
 position = Vector2(5223, -1501)
-
-[node name="Key2" parent="." instance=ExtResource("9_x0isd")]
-position = Vector2(4597, -1701)
-scale = Vector2(4, 4)
 
 [node name="Door3" parent="." instance=ExtResource("8_mqhnu")]
 position = Vector2(7212, -1281)
@@ -1670,5 +1674,5 @@ scale = Vector2(1, 100000)
 texture = SubResource("GradientTexture1D_obppl")
 
 [connection signal="timeout" from="Knight/Camera/Timer" to="Knight/Camera" method="OnTimerTimeout"]
-[connection signal="key_collected" from="Key" to="Door" method="_on_door_open"]
-[connection signal="key_collected" from="Key2" to="Door2" method="_on_door_open"]
+[connection signal="key_collected" from="Door/Key" to="Door" method="_on_door_open"]
+[connection signal="key_collected" from="Door2/Key2" to="Door2" method="_on_door_open"]
