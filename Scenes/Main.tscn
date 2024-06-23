@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8jgu5vhnly84"]
+[gd_scene load_steps=17 format=3 uid="uid://c8jgu5vhnly84"]
 
 [ext_resource type="PackedScene" uid="uid://cci8infj626o0" path="res://Scenes/Player.tscn" id="2_gxgar"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_wh3qp"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cmsbrk3bko342" path="res://Scenes/MeleeEnemy.tscn" id="9_wlvf7"]
 [ext_resource type="PackedScene" uid="uid://bv474b2h6og4n" path="res://Scenes/RangedEnemy.tscn" id="10_68i8q"]
 [ext_resource type="PackedScene" uid="uid://b373wftwmgmqh" path="res://Scenes/WinArea.tscn" id="11_jq63m"]
+[ext_resource type="PackedScene" uid="uid://drbollloj27h7" path="res://Scenes/Door.tscn" id="12_2lfnn"]
+[ext_resource type="PackedScene" uid="uid://dhdvjq70an4do" path="res://Scenes/Key.tscn" id="13_dre33"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dq4ps"]
 texture = ExtResource("3_3t11n")
@@ -3022,5 +3024,12 @@ position = Vector2(872, 3072)
 
 [node name="WinArea" parent="." instance=ExtResource("11_jq63m")]
 position = Vector2(6943, 0)
+
+[node name="Door" parent="." instance=ExtResource("12_2lfnn")]
+position = Vector2(808, -832)
+rotation = 1.5708
+
+[node name="Key" parent="." instance=ExtResource("13_dre33")]
+position = Vector2(552, -656)
 
 [connection signal="timeout" from="Knight/Camera/Timer" to="Knight/Camera" method="OnTimerTimeout"]

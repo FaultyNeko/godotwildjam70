@@ -1,22 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://butqrejbwa8nj"]
+[gd_scene load_steps=9 format=3 uid="uid://drbollloj27h7"]
 
 [ext_resource type="Texture2D" uid="uid://csmddd27m6buq" path="res://Assets/TileSets/Door TileSet.png" id="1_7hgvk"]
 [ext_resource type="Script" path="res://Scripts/Door.gd" id="1_dp81e"]
-
-[sub_resource type="Animation" id="Animation_8k637"]
-resource_name = "Rotate 90"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Achor:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.5708]
-}
 
 [sub_resource type="Animation" id="Animation_06r80"]
 length = 0.001
@@ -43,6 +28,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8k637"]
+resource_name = "Rotate 90"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Achor:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
 }
 
 [sub_resource type="Animation" id="Animation_5cl3h"]
@@ -659,6 +659,7 @@ libraries = {
 }
 
 [node name="Achor" type="Node2D" parent="."]
+scale = Vector2(2, 2)
 
 [node name="TileMap" type="TileMap" parent="Achor"]
 position = Vector2(0, -8)
