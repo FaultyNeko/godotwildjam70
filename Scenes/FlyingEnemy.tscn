@@ -4,13 +4,14 @@
 [ext_resource type="Script" path="res://Scripts/FlyingEnemy.cs" id="1_agmyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4c6k"]
-size = Vector2(128, 128)
+size = Vector2(128, 64)
 
 [node name="Flying Enemy" type="CharacterBody2D"]
 modulate = Color(1, 1, 0, 1)
 script = ExtResource("1_agmyi")
 
 [node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.5)
 texture = ExtResource("1_6v8om")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

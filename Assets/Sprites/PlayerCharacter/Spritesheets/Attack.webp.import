@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dal125yqhmohq"
-path="res://.godot/imported/AttackTest.png-1f9790d84f7632d7236214df62e78f0b.ctex"
+uid="uid://3a1sagqf111d"
+path="res://.godot/imported/Attack.webp-2d58ad3e5a5488b627a6c9500e0b1238.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PlayerCharacter/Spritesheets/AttackTest.png"
-dest_files=["res://.godot/imported/AttackTest.png-1f9790d84f7632d7236214df62e78f0b.ctex"]
+source_file="res://Assets/Sprites/PlayerCharacter/Spritesheets/Attack.webp"
+dest_files=["res://.godot/imported/Attack.webp-2d58ad3e5a5488b627a6c9500e0b1238.ctex"]
 
 [params]
 

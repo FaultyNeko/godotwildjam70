@@ -60,7 +60,7 @@ public partial class Player : CharacterBody2D
             _dashCooldownTimeLeft = DashCooldown;
             _stateMachine.Travel("Dash");
             _dashMult = direction;
-            _positionMarker.Scale = new Vector2(direction, 1);
+            _positionMarker.Scale = new Vector2(-direction, 1);
             AudioManager.PlayerAudio.PlayAudio(this, "Dash", "SFX");
         }
         
@@ -82,7 +82,7 @@ public partial class Player : CharacterBody2D
         // Handle Running
         if (direction != 0 && !_isDashing)
         {
-            _positionMarker.Scale = new Vector2(direction, 1);
+            _positionMarker.Scale = new Vector2(-direction, 1);
             if (IsOnFloor())
                 _stateMachine.Travel("Run");
             if (!_isDashing && IsOnFloor() && !_stepPlayer.Playing && FindChild("Land") == null)

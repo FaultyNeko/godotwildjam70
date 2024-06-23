@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk4e1cimrgrfs"]
+[gd_scene load_steps=5 format=3 uid="uid://bwh1vso3gl0g7"]
 
 [ext_resource type="Script" path="res://Scripts/StartCutscene.cs" id="1_owfa8"]
 [ext_resource type="FontFile" uid="uid://da0xmfnu3xvo" path="res://Assets/Fonts/Enchanted Land.otf" id="2_ikw3w"]
 
-[sub_resource type="Gradient" id="Gradient_g7ff0"]
+[sub_resource type="Gradient" id="Gradient_trdv5"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3dl7k"]
-gradient = SubResource("Gradient_g7ff0")
+gradient = SubResource("Gradient_trdv5")
 
 [node name="StartCutscene" type="Control"]
 layout_mode = 3

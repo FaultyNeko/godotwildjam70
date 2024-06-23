@@ -59,7 +59,7 @@ public partial class FlyingEnemy : CharacterBody2D
 		RigidBody2D egg = _egg.Instantiate<RigidBody2D>();
 		AudioManager.PlayerAudio.PlayPositionalAudio(this, "EnemyEgg", "SFX");
 		AddChild(egg);
-		egg.Position = _marker.Position with {Y = _marker.Position.Y + 40};
+		egg.Position = _marker.Position with {Y = _marker.Position.Y + 20};
 		egg.BodyEntered += body => EggCollision(body);
 		egg.BodyEntered += body => egg.CallDeferred(MethodName.QueueFree);
 	}

@@ -109,12 +109,14 @@ modulate = Color(0, 1, 1, 1)
 texture = ExtResource("1_s4027")
 
 [node name="Hurtbox" type="Area2D" parent="Marker2D"]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Hurtbox"]
 position = Vector2(112, 0)
 shape = SubResource("RectangleShape2D_ukrss")
 
 [node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+visible = false
 position = Vector2(112, 0)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_s4027")
