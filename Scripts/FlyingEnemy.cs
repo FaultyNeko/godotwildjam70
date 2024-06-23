@@ -8,7 +8,7 @@ public partial class FlyingEnemy : CharacterBody2D
 	private Marker2D _marker;
 	private PackedScene _egg;
 	private Tween _layEgg;
-	[Export] private int _health = 10;
+	[Export] private int _health = 45;
 
 	public float Speed = 100;
 	

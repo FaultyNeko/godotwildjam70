@@ -938,17 +938,19 @@ script = ExtResource("1_bq5bx")
 position = Vector2(-16, -8)
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_sou04")
-animation = &"Attack"
+animation = &"Idle"
+frame = 19
 offset = Vector2(-50, 53)
 
 [node name="Hurtbox" type="Area2D" parent="Marker2D"]
+collision_mask = 7
+monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Marker2D/Hurtbox"]
 visible = false
 polygon = PackedVector2Array(24, -64, -32, -40, -64, 0, -56, 32, -40, 40, 16, 48)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 callback_mode_process = 0
 tree_root = SubResource("AnimationNodeStateMachine_s7bpj")
 anim_player = NodePath("../AnimationPlayer")

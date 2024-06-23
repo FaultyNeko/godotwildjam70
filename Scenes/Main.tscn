@@ -5,15 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://23npfs33x84x" path="res://Assets/TileSets/Terrain TileSet.png" id="3_3t11n"]
 [ext_resource type="AudioStream" uid="uid://cvcbmm7ow0ete" path="res://Assets/SFX/startgame.wav" id="3_bq0r7"]
 [ext_resource type="PackedScene" uid="uid://d3q7dujcumhpp" path="res://Scenes/HUD.tscn" id="4_60c6g"]
-[ext_resource type="PackedScene" path="res://Scenes/Demon.tscn" id="4_x34wm"]
+[ext_resource type="PackedScene" uid="uid://d0shbwfge1p51" path="res://Scenes/Demon.tscn" id="4_x34wm"]
 [ext_resource type="PackedScene" uid="uid://bqd4xph2exccu" path="res://Scenes/PauseScreen.tscn" id="5_cdogp"]
 [ext_resource type="PackedScene" uid="uid://dhnrwr5rcoh8e" path="res://Scenes/UpgradeNode.tscn" id="8_bnx7s"]
 [ext_resource type="PackedScene" uid="uid://c2us70mwicnjm" path="res://Scenes/FlyingEnemy.tscn" id="8_yyg81"]
 [ext_resource type="PackedScene" uid="uid://cmsbrk3bko342" path="res://Scenes/MeleeEnemy.tscn" id="9_wlvf7"]
 [ext_resource type="PackedScene" uid="uid://bv474b2h6og4n" path="res://Scenes/RangedEnemy.tscn" id="10_68i8q"]
 [ext_resource type="PackedScene" uid="uid://b373wftwmgmqh" path="res://Scenes/WinArea.tscn" id="11_jq63m"]
-[ext_resource type="PackedScene" path="res://Scenes/Door.tscn" id="12_2lfnn"]
-[ext_resource type="PackedScene" path="res://Scenes/Key.tscn" id="13_dre33"]
+[ext_resource type="PackedScene" uid="uid://cxagqy75qody4" path="res://Scenes/Door.tscn" id="12_2lfnn"]
+[ext_resource type="PackedScene" uid="uid://cih2c8efclsx1" path="res://Scenes/Key.tscn" id="13_dre33"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2dmhc"]
 vertices = PackedVector2Array(14621, -4294, 14590, 2197, -21, 2142, 57, -4453)

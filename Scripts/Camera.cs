@@ -26,6 +26,7 @@ public partial class Camera : Camera2D
 				_player2 = node as Player;
 		}
 		Global.CurrentPlayer = _player1;
+		Position = _player1.Position;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
