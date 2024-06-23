@@ -43,6 +43,7 @@ public partial class AudioStreamLayered : Node
     {
 		if (_layersPlayingPrev != LayersPlaying) {
 			MuteLayers();
+			_layersPlayingPrev = LayersPlaying;
 		}
     }
 
