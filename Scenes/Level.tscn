@@ -1,15 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0y6p0vejdthc"]
+[gd_scene load_steps=21 format=3 uid="uid://cpobp6ehsw8qb"]
 
-[ext_resource type="PackedScene" uid="uid://cci8infj626o0" path="res://Scenes/Player.tscn" id="1_qjstr"]
+[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="1_qjstr"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_f0qve"]
 [ext_resource type="AudioStream" uid="uid://cvcbmm7ow0ete" path="res://Assets/SFX/startgame.wav" id="3_vd7ms"]
-[ext_resource type="TileSet" uid="uid://bwvjygp3rgfh6" path="res://Assets/TileSets/Terrain TileSet.tres" id="4_0gbyj"]
+[ext_resource type="TileSet" uid="uid://bhe6g8j1kgsj7" path="res://Assets/TileSets/Terrain TileSet.tres" id="4_0gbyj"]
 [ext_resource type="PackedScene" uid="uid://d3q7dujcumhpp" path="res://Scenes/HUD.tscn" id="5_donq3"]
 [ext_resource type="Texture2D" uid="uid://23npfs33x84x" path="res://Assets/TileSets/Terrain TileSet.png" id="5_hlauo"]
 [ext_resource type="PackedScene" uid="uid://bqd4xph2exccu" path="res://Scenes/PauseScreen.tscn" id="6_1jwm4"]
 [ext_resource type="FontFile" uid="uid://b5770shacgby8" path="res://Assets/Fonts/Angel wish.ttf" id="7_5c1p3"]
-[ext_resource type="PackedScene" uid="uid://butqrejbwa8nj" path="res://Scenes/Door.tscn" id="8_mqhnu"]
-[ext_resource type="PackedScene" uid="uid://dodhhr6f33uf1" path="res://Scenes/Key.tscn" id="9_x0isd"]
+[ext_resource type="PackedScene" path="res://Scenes/Door.tscn" id="8_mqhnu"]
+[ext_resource type="PackedScene" path="res://Scenes/Key.tscn" id="9_x0isd"]
 [ext_resource type="PackedScene" uid="uid://c2us70mwicnjm" path="res://Scenes/FlyingEnemy.tscn" id="11_sh7gv"]
 [ext_resource type="PackedScene" uid="uid://cmsbrk3bko342" path="res://Scenes/MeleeEnemy.tscn" id="12_11tn0"]
 
@@ -1611,13 +1611,14 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 3639.0
-offset_top = -1007.0
-offset_right = 4031.0
-offset_bottom = -967.0
+offset_left = 3616.0
+offset_top = -1008.0
+offset_right = 4008.0
+offset_bottom = -968.0
 theme_override_fonts/font = ExtResource("7_5c1p3")
 theme_override_font_sizes/font_size = 39
 text = "Hold Tab to swap between souls"
+metadata/_edit_use_anchors_ = true
 
 [node name="Door" parent="." instance=ExtResource("8_mqhnu")]
 position = Vector2(4068, -1084)

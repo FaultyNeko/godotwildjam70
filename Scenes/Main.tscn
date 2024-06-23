@@ -1,18 +1,18 @@
 [gd_scene load_steps=15 format=3 uid="uid://c8jgu5vhnly84"]
 
-[ext_resource type="PackedScene" uid="uid://cci8infj626o0" path="res://Scenes/Player.tscn" id="2_gxgar"]
+[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="2_gxgar"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="2_wh3qp"]
 [ext_resource type="AudioStream" uid="uid://cvcbmm7ow0ete" path="res://Assets/SFX/startgame.wav" id="3_bq0r7"]
 [ext_resource type="PackedScene" uid="uid://d3q7dujcumhpp" path="res://Scenes/HUD.tscn" id="4_60c6g"]
-[ext_resource type="TileSet" uid="uid://bwvjygp3rgfh6" path="res://Assets/TileSets/Terrain TileSet.tres" id="4_sjpqu"]
+[ext_resource type="TileSet" uid="uid://bhe6g8j1kgsj7" path="res://Assets/TileSets/Terrain TileSet.tres" id="4_sjpqu"]
 [ext_resource type="PackedScene" uid="uid://bqd4xph2exccu" path="res://Scenes/PauseScreen.tscn" id="5_cdogp"]
 [ext_resource type="PackedScene" uid="uid://dhnrwr5rcoh8e" path="res://Scenes/UpgradeNode.tscn" id="8_bnx7s"]
 [ext_resource type="PackedScene" uid="uid://c2us70mwicnjm" path="res://Scenes/FlyingEnemy.tscn" id="8_yyg81"]
 [ext_resource type="PackedScene" uid="uid://cmsbrk3bko342" path="res://Scenes/MeleeEnemy.tscn" id="9_wlvf7"]
 [ext_resource type="PackedScene" uid="uid://bv474b2h6og4n" path="res://Scenes/RangedEnemy.tscn" id="10_68i8q"]
 [ext_resource type="PackedScene" uid="uid://b373wftwmgmqh" path="res://Scenes/WinArea.tscn" id="11_jq63m"]
-[ext_resource type="PackedScene" uid="uid://butqrejbwa8nj" path="res://Scenes/Door.tscn" id="12_xj57a"]
-[ext_resource type="PackedScene" uid="uid://dodhhr6f33uf1" path="res://Scenes/Key.tscn" id="13_tn6t8"]
+[ext_resource type="PackedScene" path="res://Scenes/Door.tscn" id="12_xj57a"]
+[ext_resource type="PackedScene" path="res://Scenes/Key.tscn" id="13_tn6t8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2dmhc"]
 vertices = PackedVector2Array(14621, -4294, 14590, 2197, -21, 2142, 57, -4453)
