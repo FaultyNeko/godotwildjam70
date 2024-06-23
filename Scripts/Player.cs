@@ -17,6 +17,7 @@ public partial class Player : CharacterBody2D
     private bool _isDashing, _isWallSliding, _isOnGround, _wallJump, _doubleJump;
     private float _dashTimeLeft, _dashCooldownTimeLeft, _dashMult;
     private AnimationNodeStateMachinePlayback _stateMachine;
+    private AnimationPlayer _animPlayer;
     private Marker2D _positionMarker;
     private HUD _hud;
     private AudioStreamPlayer _stepPlayer;
@@ -35,6 +36,7 @@ public partial class Player : CharacterBody2D
         Health = 100;
         _hud = (HUD)GetTree().GetFirstNodeInGroup("HUD");
         _stepPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        _animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         _hurtbox = _positionMarker.GetNode<Area2D>("Hurtbox");
     }
     
@@ -59,7 +61,7 @@ public partial class Player : CharacterBody2D
         {
             _dashTimeLeft = DashDuration;
             _dashCooldownTimeLeft = DashCooldown;
-            _stateMachine.Travel("Dash");
+            _stateMachine.Travel("Run"); // Replace with Dash
             _dashMult = direction;
             _positionMarker.Scale = new Vector2(-direction, 1);
             AudioManager.PlayerAudio.PlayAudio(this, "Dash", "SFX");
@@ -136,12 +138,12 @@ public partial class Player : CharacterBody2D
         _isOnGround = IsOnFloor();
         
         // Handle attacking
-        if (Input.IsActionJustPressed("Attack"))
+        if (Input.IsActionJustPressed("Attack") && _animPlayer.CurrentAnimation != "Attack")
         {
-            if (!_hurtbox.Monitorable)
-                AudioManager.PlayerAudio.PlayAudio(this, "PlayerAttack", "SFX");
+            AudioManager.PlayerAudio.PlayAudio(this, "PlayerAttack", "SFX");
             _stateMachine.Travel("Attack");
         }
+        GD.Print(_animPlayer.CurrentAnimation);
         
         Velocity = velocity;
         
