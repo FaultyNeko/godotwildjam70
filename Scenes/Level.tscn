@@ -20,9 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://b373wftwmgmqh" path="res://Scenes/WinArea.tscn" id="18_l4sr5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_unwtk"]
-vertices = PackedVector2Array(1607, -2396, 1605, -4713, 2002, -4704, 1979, 189, -349, 142, -349, -2442)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-358.981, 151.795, -358.964, -2453.07, 1597.04, -2406.19, 1595.05, -4724.19, 2013.05, -4714.19, 1989.02, 199.81)])
+vertices = PackedVector2Array(1607, -2396, 1605, -4713, 2002, -4704, 1979, 200, -349, 142, -349, -2442, 996, 169, 993, 1434, 1969, 1451)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 0, 6), PackedInt32Array(7, 6, 0, 3, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-358.981, 151.795, -358.964, -2453.07, 1597.04, -2406.19, 1595.05, -4724.19, 2013.05, -4714.19, 1989.02, 199.81, 1979.01, 1461.81, 983.011, 1443.8, 986.066, 179.3)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="Gradient" id="Gradient_jnh2h"]
